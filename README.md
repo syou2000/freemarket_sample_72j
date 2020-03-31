@@ -13,9 +13,9 @@
 |state|string|null:false|
 |shipping_date|integer|null: false|
 |size|integer||
-|brand_id||
+|brand_id|integer|null: false|
 |category_id|integer|null: false|
-|user_id|
+|user_id|integer|null: false|
 |item_status|integer|null: false|
 
 ### Association
@@ -53,7 +53,6 @@
 - has_many lates
 - has_one address
 - has_one profiels
-- has_one socialprofiles
 
 
 ## profielesテーブル
@@ -103,31 +102,28 @@
 
 ### Association
 - has_many items
-- has_many category through :bland-categorie
+- has_many categories through :brand-category
 
 
 ## categoriesテーブル
 |column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|category-level_id|string|null: false|
 
 ### Association
 - has_many items
-- has many category-level2
-- has_many blands through :bland-categorie
+- has_many brands through :brand-category
 
 
-## bland-categoriテーブル
+## brand-categoryテーブル
 |column|Type|Options|
 |------|----|-------|
-|bland_id|references|forgin_key: true, index: true|
-|category_id|references|forgin_key, index: true|
+|categories_id|integer|null: false|
+|brands_id|integer|null: false|
 
 ### Association
 - belongs_to bland
 - belongs_to category
-
 
 ## messagesテーブル
 |column|Type|Options|
@@ -145,11 +141,11 @@
 |column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false|
-||integer|null: false, index: false|
+|ZIP_code|integer|null: false, index: false|
 |city|string|null: false|
 |town|string|null: false|
-|bulding|string||
-|prefecture_num|integer|null: false|
+|bulding|string|null: false|
+|prefecture_number|integer|null: false|
 
 ### Association
 - belongs_to user
