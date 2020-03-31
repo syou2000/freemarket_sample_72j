@@ -137,7 +137,7 @@
 - belongs_to item
 
 
-## profielesテーブル
+## addressテーブル
 |column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false|
