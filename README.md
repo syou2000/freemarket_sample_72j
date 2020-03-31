@@ -27,4 +27,4 @@ Things you may want to cover:
 
 ## Mihiro Sairo Test
 
-## Ken Takayanagi Test
+## Nakakouchi Ryou Test
