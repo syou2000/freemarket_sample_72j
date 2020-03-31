@@ -1,40 +1,97 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## freemarket_sample_72j
 
-Things you may want to cover:
+## itemsテーブル
+|column|Type|Options|
+|------|----|-------|
+|name|string|null: false, index:true|
+|price|string|null: false,index:true|
+|explain|text|null: false|
+|postage|integer|nullfalse|
+|region|string|null:false|
+|state|string|null:false|
+|shipping_date|integer|null: false|
+|size|integer||
+|brand_id||
+|category_id|integer|null: false|
+|user_id|
+|item_status|integer|null: false|
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-## Reina Takemura Test
-
-## Mihiro Sairo Test
+### Association
+- 
 
 
-## Sho Shimizu Test
+## item_imagesテーブル
+|column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|item_id|integer|null: false|
 
-## Nakakouchi Ryou Test
+### Association
+- 
 
 
-## Reina Takemura Test2
-## Takayanagi Ken Test
+## usersテーブル
+|column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false, index:true|
+|user_icon|string||
+|profile_text|text||
+|late_count|integer||
 
-## conflict!!!!!
+### Association
+- 
 
+
+## profielesテーブル
+|column|Type|Options|
+|------|----|-------|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name_kana|string|null: false|
+|last_name_kana|string|null: false|
+|phone_number|integer|null: false, unique: true|
+|birthday|datetime|null: false|
+|user_id|integer|null:false|
+
+### Association
+- 
+
+
+## commentsテーブル
+|column|Type|Options|
+|------|----|-------|
+|user_id|string|null: false|
+|item_id|string|null: false|
+|text|text|null: false|
+
+### Association
+- 
+
+
+## latesテーブル
+|column|Type|Options|
+|------|----|-------|
+|user_id|string|null: false|
+|text|text||
+|late|integer||
+
+### Association
+- 
+
+
+## brandsテーブル
+|column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- 
+
+
+## latesテーブル
+|column|Type|Options|
+|------|----|-------|
+|user_id|string|null: false|
+|text|text||
