@@ -19,7 +19,13 @@
 |item_status|integer|null: false|
 
 ### Association
-- 
+- has_many comments
+- belongs_to category
+- belongs_to user
+- belongs_to brand
+- has_many messages
+- has_many item_images
+- has_one late
 
 
 ## item_imagesテーブル
@@ -29,7 +35,7 @@
 |item_id|integer|null: false|
 
 ### Association
-- 
+- belongs_to item
 
 
 ## usersテーブル
@@ -41,7 +47,13 @@
 |late_count|integer||
 
 ### Association
-- 
+- has_many items
+- has_many comments
+- has_many messages
+- has_many lates
+- has_one address
+- has_one profiels
+- has_one socialprofiles
 
 
 ## profielesテーブル
@@ -56,7 +68,7 @@
 |user_id|integer|null:false|
 
 ### Association
-- 
+- belongs_to user
 
 
 ## commentsテーブル
@@ -67,7 +79,8 @@
 |text|text|null: false|
 
 ### Association
-- 
+- belongs_to user
+- belongs_to item 
 
 
 ## latesテーブル
@@ -78,7 +91,9 @@
 |late|integer||
 
 ### Association
-- 
+- belongs_to user
+- belongs_to item
+
 
 
 ## brandsテーブル
@@ -87,11 +102,54 @@
 |name|string|null: false|
 
 ### Association
-- 
+- has_many items
+- has_many category through :bland-categorie
 
 
-## latesテーブル
+## categoriesテーブル
+|column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|category-level_id|string|null: false|
+
+### Association
+- has_many items
+- has many category-level2
+- has_many blands through :bland-categorie
+
+
+## bland-categoriテーブル
+|column|Type|Options|
+|------|----|-------|
+|bland_id|references|forgin_key: true, index: true|
+|category_id|references|forgin_key, index: true|
+
+### Association
+- belongs_to bland
+- belongs_to category
+
+
+## messagesテーブル
 |column|Type|Options|
 |------|----|-------|
 |user_id|string|null: false|
-|text|text||
+|item_id|integer|null: false|
+|text|text|null: false|
+
+### Association
+- belongs_to user
+- belongs_to item
+
+
+## profielesテーブル
+|column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false|
+||integer|null: false, index: false|
+|city|string|null: false|
+|town|string|null: false|
+|bulding|string||
+|prefecture_num|integer|null: false|
+
+### Association
+- belongs_to user
