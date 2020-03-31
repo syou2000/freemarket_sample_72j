@@ -13,13 +13,19 @@
 |state|string|null:false|
 |shipping_date|integer|null: false|
 |size|integer||
-|brand_id||
+|brand_id|integer|null: false|
 |category_id|integer|null: false|
-|user_id|
+|user_id|integer|null: false|
 |item_status|integer|null: false|
 
 ### Association
-- 
+- has_many comments
+- belongs_to category
+- belongs_to user
+- belongs_to brand
+- has_many messages
+- has_many item_images
+- has_one late
 
 
 ## item_imagesテーブル
@@ -29,7 +35,7 @@
 |item_id|integer|null: false|
 
 ### Association
-- 
+- belongs_to item
 
 
 ## usersテーブル
@@ -41,7 +47,12 @@
 |late_count|integer||
 
 ### Association
-- 
+- has_many items
+- has_many comments
+- has_many messages
+- has_many lates
+- has_one address
+- has_one profiels
 
 
 ## profielesテーブル
@@ -56,7 +67,7 @@
 |user_id|integer|null:false|
 
 ### Association
-- 
+- belongs_to user
 
 
 ## commentsテーブル
@@ -67,7 +78,8 @@
 |text|text|null: false|
 
 ### Association
-- 
+- belongs_to user
+- belongs_to item 
 
 
 ## latesテーブル
@@ -78,7 +90,9 @@
 |late|integer||
 
 ### Association
-- 
+- belongs_to user
+- belongs_to item
+
 
 
 ## brandsテーブル
@@ -87,11 +101,51 @@
 |name|string|null: false|
 
 ### Association
-- 
+- has_many items
+- has_many categories through :brand-category
 
 
-## latesテーブル
+## categoriesテーブル
+|column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many items
+- has_many brands through :brand-category
+
+
+## brand-categoryテーブル
+|column|Type|Options|
+|------|----|-------|
+|categories_id|integer|null: false|
+|brands_id|integer|null: false|
+
+### Association
+- belongs_to bland
+- belongs_to category
+
+## messagesテーブル
 |column|Type|Options|
 |------|----|-------|
 |user_id|string|null: false|
-|text|text||
+|item_id|integer|null: false|
+|text|text|null: false|
+
+### Association
+- belongs_to user
+- belongs_to item
+
+
+## addressテーブル
+|column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false|
+|ZIP_code|integer|null: false, index: false|
+|city|string|null: false|
+|town|string|null: false|
+|bulding|string|null: false|
+|prefecture_number|integer|null: false|
+
+### Association
+- belongs_to user
