@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+}
+
+.signInHome {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background-color: #f5f5f5;
+  text-align: center;
+  &__header {
+    height: 128px;
+    line-height: 128px;
+    position: relative;
+    img.login_logo {
+      width: 185px;
+      height: 50px;
+      position: absolute;
+      top: 40px;
+      left: 42%;
+    }
+  }
+
+  &__main {
+    height: 384px;
+    width: 100vw;
+
+    &__contents {
+      height: 100%;
+      width: 700px;
+      background-color: white;
+      margin: auto;
+
+      h2 {
+        height: 97px;
+        width: 100%;
+        border-bottom: 1px solid #f5f5f5;
+        line-height: 97px;
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      &__accounts {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 287px;
+
+
+        .mailBtn {
+          margin: 0 auto;
+          margin-top: 40px;
+          background-color: #3ccace;
+          height: 50px;
+          width: 343px;
+          border-radius: 5px;
+          color: white;
+          text-decoration: none;
+          font-size: 14px;
+          line-height: 50px;
+          position: relative;
+
+          i {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 1.5em;
+          }
+        }
+
+
+        .facebookBtn {
+          margin: 15px auto;
+          background-color: #385185;
+          height: 50px;
+          width: 343px;
+          border-radius: 5px;
+          color: white;
+          text-decoration: none;
+          font-size: 14px;
+          line-height: 50px;
+          position: relative;
+
+          i {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 1.5em;
+          }
+        }
+
+        .googleBtn {
+          margin: 0 auto;
+          background-color: white;
+          border: 1px solid black;
+          height: 50px;
+          width: 343px;
+          border-radius: 5px;
+          color: black;
+          text-decoration: none;
+          font-size: 14px;
+          line-height: 50px;
+          position: relative;
+
+          i {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 1.5em;
+          }
+        }
+        
+
+      }
+    }
+  }
+
+  .signInHome__footer {
+    height: 100%;
+    &__inner {
+      width: 460px;
+      margin: 0 auto;
+      padding: 30px 0 30px 0;
+      text-align: center;
+      &__nav {
+        width: 456px;
+        margin: auto;
+        margin-top: 10px;
+        ul {
+          display: flex;
+          justify-content: space-around;
+          padding-left: 30px;
+          padding-right: 30px;
+          li {
+            font-size: 12px;
+            margin-bottom: 40px;
+
+            a {
+              color: #333333;
+              text-decoration: none;
+              touch-action: manipulation
+            }
+          }
+        }
+      }
+      h1 {
+        width: 185px;
+        height: 65px;
+        margin: 40px auto 0;
+        img.login_logo {
+          width: 185px;
+          height: 50px;
+        }
+      }
+      p {
+        font-family: Helvetica;
+        small {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
