@@ -1,20 +1,33 @@
-%h2 Furima
-=
+.loginPage
+  .loginPage__header
+    %h1
+      %img(src="/logo.png" alt="logo" class="login_logo")
+  .loginPage__main
+    .loginPage__main__loginpanel
+      .loginPage__main__loginpanel__no-account
+      .loginPage__main__loginpanel__external-authenticate
+      .loginPage__main__loginpanel__form-inner
+        =form_with
+  .longinPage__footer
+    .longinPage__footer__inner
+      %nav.longinPage__footer__inner__nav
 
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+
+
+-# %h2 Log in
+-# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     %br/
+-#     = f.password_field :password, autocomplete: "current-password"
+-#   - if devise_mapping.rememberable?
+-#     .field
+-#       = f.check_box :remember_me
+-#       = f.label :remember_me
+-#   .actions
+-#     = f.submit "Log in"
+-# = render "users/shared/links"
