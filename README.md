@@ -137,11 +137,11 @@
 - belongs_to item
 
 
-## addressテーブル
+## addressesテーブル
 |column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false|
-|ZIP_code|integer|null: false, index: false|
+|zip_code|integer|null: false, index: false|
 |city|string|null: false|
 |town|string|null: false|
 |bulding|string|null: false|
