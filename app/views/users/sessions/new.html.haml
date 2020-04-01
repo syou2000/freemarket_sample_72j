@@ -1,17 +1,43 @@
 .loginPage
-  .loginPage__header
+  .header
     %h1
       %img(src="/logo.png" alt="logo" class="login_logo")
   .loginPage__main
-    .loginPage__main__loginpanel
-      .loginPage__main__loginpanel__no-account
-      .loginPage__main__loginpanel__external-authenticate
-      .loginPage__main__loginpanel__form-inner
-        =form_with
-  .longinPage__footer
-    .longinPage__footer__inner
-      %nav.longinPage__footer__inner__nav
+    .loginPage__main__contents
+      .loginPage__main__contents__no-account
+        %p アカウントをお持ちでない方はこちら
+        = link_to "新規会員登録", "#"
+      .loginPage__main__contents__external-authenticate
+        = link_to "#", class: "facebookBtn" do
+          = icon('fab', 'facebook-square', class: 'facebookBtn-icon fa-2x')
+          Facebookでログイン
+        = link_to "#", class: "googleBtn" do
+          = icon('fab', 'google', class: 'googleBtn-icon fa-2x')
+          Googleでログイン
+      .loginPage__main__contents__form
+        %input.loginPage__main__contents__form--email_feild{name: "email", placeholder: "メールアドレス", type: "email", value: ""}
+        %input.loginPage__main__contents__form--password_feild{:name => "password", :placeholder => "パスワード", :type => "password", :value => ""}
+        %button.loginPage__main__contents__form--login{type: "submit"}
+          ログイン
+        = link_to "パスワードをお忘れの方", "#", class: "passwordForget"
 
+
+  .footer
+    .footer__inner
+      %nav.footer__inner__nav
+        %ul.footer__inner__nav__category
+          %li<
+            = link_to "プライバシーポリシー", "#"
+          %li<
+            = link_to "メルカリ利用規約", "#"
+          %li<
+            = link_to "特定商取引に関する表記", "#"
+      %h1
+        %img(src="/logo-white.png" alt="logo" class="login_logo")
+      %p
+        %small
+          &copy Furima, Inc.
+      
 
 
 -# %h2 Log in
