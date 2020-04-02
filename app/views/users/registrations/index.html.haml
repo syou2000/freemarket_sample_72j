@@ -1,12 +1,13 @@
 .signInHome
   .signInHome__header
     %h1
-      %img(src="/logo.png" alt="logo" class="login_logo")
+      = link_to root_path do
+        = image_tag "logo.png", class: "login_logo"
   .signInHome__main
     .signInHome__main__contents
       %h2 新規会員登録
       .signInHome__main__contents__accounts
-        = link_to "#", class: "mailBtn" do
+        = link_to "/users/sign_up", class: "mailBtn" do
           = icon('far fa-envelope', class: "mailIcon")
           メールアドレスで登録する  
         = link_to "#", class: "facebookBtn" do
@@ -19,14 +20,15 @@
     .signInHome__footer__inner
     %nav.signInHome__footer__inner__nav
       %ul.signInHome__footer__inner__nav__category
-        %li<
-          = link_to "プライバシーポリシー", "#"
-        %li<
-          = link_to "メルカリ利用規約", "#"
-        %li<
-          = link_to "特定商取引に関する表記", "#"
-    %h1
-      %img(src="/logo-white.png" alt="logo" class="login_logo" width="185px" height="50")
+        %li
+          = link_to "プライバシーポリシー", "#", class: "privacyPolicy"
+        %li
+          = link_to "フリマ利用規約", "#", class: "terms"
+        %li
+          = link_to "特定商取引に関する表記", "#", class: "notation"
+      .signInHome__footer__inner__nav__logo
+        = link_to root_path do
+          = image_tag "logo-white.png"
     %p
       %small
         &copy Furima, Inc.

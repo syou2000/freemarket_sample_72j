@@ -6,11 +6,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def index
   end
-
-  # GET /resource/registrations/sign_up
-  # def new
-  #   super
-  # end
+  
+  def new
+    super
+  end
 
   # POST /resource/registrations
   # def create
