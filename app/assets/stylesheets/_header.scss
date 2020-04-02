@@ -1,0 +1,73 @@
+.header {
+  display: block;
+  padding: 0 60px;
+  margin-bottom: 10px;
+  &__interior {
+    width: 100%;
+    max-width: 1040px;
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 15px 0 0;
+    &__main {
+      position: relative;
+      display: flex;
+      align-items: center;
+      &__icon {
+        padding-bottom: 10px;
+        margin-right: 40px;
+        border-radius: 4px;
+        .icon {
+          width: 140px;
+          display: block;
+        }
+      }
+      &__search-box {
+        margin-left: auto;
+        width: 100%;
+        display: flex;
+        .form__search {
+          width: 800px;
+          height: 40px;
+          padding-left: 10px;
+        }
+        &__icon {
+          background-color: #3ccace;
+          width: 40px;
+          height: 40px;
+          padding: 8px;
+          margin-left: 2px;
+        }
+      }
+    }
+    &__nav {
+      font-size: 14px;
+      display: flex;
+      margin-bottom: 10px;
+      a {
+        color: #333333;
+        font-size: 16px;
+        text-decoration: none;
+      }
+      &__left {
+        position: relative;
+        display: flex;
+        &__categorie {
+          padding-right: 30px;
+        }
+        &__brand {
+          padding-left: 0px;
+        }
+      }
+      &__right {
+        margin-left: auto;
+        display: flex;
+        &__login {
+          padding-left: 0px;
+        }
+        &__new {
+          padding-left: 30px;
+        }
+      }
+    }
+  }
+}
