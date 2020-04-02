@@ -1,5 +1,5 @@
-.brand {
-  padding-bottom: 80px;
+.category {
+  padding: 60px 0;
   background-color: #f8f8f8;
   &__title {
     text-align: center;
@@ -53,6 +53,71 @@
             }
           }
         }
+      }
+      &__list:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+.brand {
+  padding: 60px 0;
+  background-color: #f8f8f8;
+  &__title {
+    text-align: center;
+    a {
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+  }
+  &__box {
+    &__title {
+      text-align: center;
+      a {
+        font-size: 24px;
+        text-decoration: none;
+        color: #3CCACE;
+        font-weight: bold;
+      }
+    }
+    &__lists {
+      width: 780px;
+      margin: 26px auto;
+      display: flex;
+      justify-content: space-around;
+      &__list {
+        background-color: white;
+        &__image {
+          .image {
+            width: 220px;
+            height: 150px;
+          }
+        }
+        &__text {
+          color: #333;
+          padding: 16px;
+          a {
+            font-size: 17px;
+          }
+          p {
+            font-size: 10px;
+          }
+          &__name {
+            line-height: 2.0;
+          }
+          &__data {
+            display: flex;
+            justify-content: space-between;
+            &__quality {
+              display: flex;
+              justify-content: space-between;
+            }
+          }
+        }
+      }
+      &__list:hover {
+        opacity: 0.5;
       }
     }
   }
