@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one :profile
   accepts_nested_attributes_for :profile
 
-  VALID_EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  VALID_EMAIL_REGEX = /\A[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\z/
 
   validates :first_name,      presence: true
   validates :last_name,       presence: true
@@ -18,4 +18,5 @@ class User < ApplicationRecord
   validates :phone_number,    uniqueness: true
   validates :birthday,        presence: true
 
+  # multiline :true
 end
