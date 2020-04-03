@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.signInHome {
+.purchasePage {
   width: 100vw;
   min-height: 100vh;
   height: 100%;
@@ -25,8 +25,16 @@
   }
 
   &__main {
-    height: 384px;
+    height: 100%;
     width: 100vw;
+
+    &__contents {
+      width: 700px;
+      min-height: 873px;
+      height: auto;
+      background-color: white;
+      margin: auto;
+    }
   }
 
   &__footer {
@@ -85,3 +93,4 @@
       }
     }
   }
+}

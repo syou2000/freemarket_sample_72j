@@ -1,21 +1,22 @@
-.signInHome
-  .signInHome__header
+.purchasePage
+  .purchasePage__header
     %h1
       = link_to root_path do
         = image_tag "logo.png", class: "login_logo"
-  .signInHome__main
-  
-  .signUpPage__footer
-    .signUpPage__footer__inner
-      %nav.signUpPage__footer__inner__nav
-        %ul.signUpPage__footer__inner__nav__category
+  .purchasePage__main
+    .purchasePage__main__contents
+
+  .purchasePage__footer
+    .purchasePage__footer__inner
+      %nav.purchasePage__footer__inner__nav
+        %ul.purchasePage__footer__inner__nav__category
           %li
             = link_to "プライバシーポリシー", "#", class: "privacyPolicy"
           %li
             = link_to "フリマ利用規約", "#", class: "terms"
           %li
             = link_to "特定商取引に関する表記", "#", class: "notation"
-        .signUpPage__footer__inner__nav__logo
+        .purchasePage__footer__inner__nav__logo
           = link_to root_path do
             = image_tag "logo-white.png"
       %p &copy Furima, Inc.
