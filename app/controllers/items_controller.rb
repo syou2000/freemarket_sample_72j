@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   def index
   end
   
-  def top_page_footer
+  def sample_show
   end
+
+
 end
