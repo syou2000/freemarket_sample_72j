@@ -9,6 +9,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def new
     super
+    @user = User.new
+    @profile = @user.build_profile
+  end
+
+  def authentication
+  end
+
+  def complete
   end
 
   # POST /resource/registrations

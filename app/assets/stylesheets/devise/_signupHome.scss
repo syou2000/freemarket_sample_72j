@@ -169,6 +169,10 @@
             height: 50px;
           }
 
+          img:hover {
+            opacity: 0.7;
+          }
+
           p {
             font-family: Helvetica;
             small {
@@ -179,8 +183,4 @@
       }
     }
   }
-}
-
-li a{
-  text-decoration: none;
 }

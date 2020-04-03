@@ -1,5 +1,7 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "sign-up-home.scss";
-
+@import "devise/authentication";
+@import "devise/complete";
+@import "devise/sign-up";
+@import "devise/signupHome";
