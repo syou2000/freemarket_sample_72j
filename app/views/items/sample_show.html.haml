@@ -38,7 +38,9 @@
                   %th カテゴリー
                   %td
                     = link_to "ベビーキッズ", "#"
+                    %br
                     = link_to "ベビー服(男女兼用)  ~95cm", "#"
+                    %br
                     = link_to "アウター", "#"
                 %tr
                   %th ブランド
@@ -61,13 +63,13 @@
                   %td 4-7日で発送
 
           .main__show__contents--top__itemBox__optionalArea
-            %ul
-              %li.optionalBtn.likeBtn#likeBtn
+            %ul.like
+              %li.likeBtn#likeBtn
                 = icon('fa', 'star')
                 お気に入り 0
             %ul.optional
-              %li.optionalBtn
-                = link_to "#" do
+              %li
+                = link_to "#", class: "optionalBtn" do
                   = icon('fa', 'flag')
                   不適切な商品の通報
 
@@ -75,16 +77,23 @@
           %form#new_comment.new_comment
             %textarea
             %p.main__show__contents--top__commentBox__comment
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br
             %button.commentBtn
+              = link_to "#" do
+                = icon('fa', 'comment')
+                コメントする
       %ul.main__show__contents--links
         %li
           = link_to "#" do
             = icon('fa', 'angle-left', class: "angleleftBtn")
             %span 前の商品
+        %li
           = link_to "#" do
             %span 後ろの商品
             = icon('fa', 'angle-right', class: "anglerightBtn")
-        %li
       .main__show__contents--relatedItems
         = link_to "ベビー・キッズをもっと見る", "#", class: "items"
       
