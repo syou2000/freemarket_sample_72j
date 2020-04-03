@@ -1,10 +1,11 @@
-=render "/top_page/header"
+.main {
+  &__show {
 
-.main
-  .main__show
-    .main__show__contents
-      .main__show__contents--top
-        .main__show__contents--top__itemBox
+    &__contents {
+
+      &--top {
+
+        &__itemBox
           %h2.main__show__contents--top__itemBox__name
             product3
           .main__show__contents--top__itemBox__body
@@ -87,15 +88,7 @@
         %li
       .main__show__contents--relatedItems
         = link_to "ベビー・キッズをもっと見る", "#", class: "items"
-      
-
-=render "/top_page/banner"
-=render "/top_page/footer"
-
-= link_to "#" do
-  .camera-btm
-    .camera-btm__text
-      出品する
-    .camera-btm__icon
-      = image_tag "/assets/icon/icon_camera.png", size: "54x54"
-
+      }
+    }
+  }
+}
