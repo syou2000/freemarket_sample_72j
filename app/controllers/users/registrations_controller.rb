@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def index
   end
-  
+
   def new
     super
     @user = User.new
@@ -20,6 +20,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource/registrations
+
+  # POST /resource
   # def create
   #   super
   # end

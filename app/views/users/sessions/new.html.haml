@@ -1,17 +1,39 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+.loginPage
+  .header
+    = link_to image_tag("logo.png", alt: "login_logo", class: "login_logo"), "#"
+  .loginPage__main
+    .loginPage__main__contents
+      .loginPage__main__contents__no-account
+        %p アカウントをお持ちでない方はこちら
+        = link_to "新規会員登録", "#"
+      .loginPage__main__contents__external-authenticate
+        = link_to "#", class: "facebookBtn" do
+          = icon('fab', 'facebook-square', class: 'facebookBtn-icon fa-2x')
+          Facebookでログイン
+        = link_to "#", class: "googleBtn" do
+          = icon('fab', 'google', class: 'googleBtn-icon fa-2x')
+          Googleでログイン
+      .loginPage__main__contents__form
+        %input.loginPage__main__contents__form--email_feild{name: "email", placeholder: "メールアドレス", type: "email", value: ""}
+        %input.loginPage__main__contents__form--password_feild{:name => "password", :placeholder => "パスワード", :type => "password", :value => ""}
+        %button.loginPage__main__contents__form--login{type: "submit"}
+          ログイン
+        = link_to "パスワードをお忘れの方", new_user_password_path, class: "passwordForget"
+
+
+  .footer
+    .footer__inner
+      %nav.footer__inner__nav
+        %ul.footer__inner__nav__category
+          %li
+            = link_to "プライバシーポリシー", "#", class: "privacyPolicy"
+          %li
+            = link_to "フリマ利用規約", "#", class: "terms"
+          %li
+            = link_to "特定商取引に関する表記", "#", class: "notation"
+
+      = link_to image_tag("logo-white.png", alt: "login_logo", class: "login_logo"), root_path
+
+      %p
+        %small
+          &copy Furima, Inc.
