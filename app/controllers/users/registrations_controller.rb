@@ -13,6 +13,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @profile = @user.build_profile
   end
 
+  def authentication
+  end
+
+  def complete
+  end
+
+  # POST /resource/registrations
+
   # POST /resource
   # def create
   #   super
