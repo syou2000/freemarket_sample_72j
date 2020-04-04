@@ -4,7 +4,30 @@
       = link_to root_path do
         = image_tag "logo.png", class: "login_logo"
   .purchasePage__main
+    .purchasePage__main__title
+      %h2 購入内容の確認
+    .purchasePage__main__product
+      .purchasePage__main__product__box
+        .purchasePage__main__product__box__image
+          -# この行に投稿の写真を追加する
+        .purchasePage__main__product__box__money
+          %p サッカースパイク
+          %span ¥10,000
+          %span.fee (税込) 着払い
     .purchasePage__main__contents
+      .purchasePage__main__contents__box
+        .purchasePage__main__contents__box__price
+          .purchasePage__main__contents__box__price__left
+            支払い金額
+          .purchasePage__main__contents__box__price__right
+            ¥10,000
+          .purchasePage__main__contents__box__price__bottom
+            .purchasePage__main__contents__box__price__bottom__box
+            %p ポイントを使用 (所持ポイント: P0)
+        .purchasePage__main__contents__box__payment
+          %h3 支払い方法
+          .purchasePage__main__contents__box__payment__way
+            = icon("fas", "book")
 
   .purchasePage__footer
     .purchasePage__footer__inner

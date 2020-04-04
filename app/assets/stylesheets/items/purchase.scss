@@ -28,12 +28,142 @@
     height: 100%;
     width: 100vw;
 
+    &__title {
+      width: 700px;
+      height: 97px;
+      background-color: white;
+      border-bottom: 1px solid #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+
+      h2 {
+        font-size: 22px;
+        font-weight: bold;
+      }
+    }
+
+    &__product {
+      width: 700px;
+      height: 145px;
+      background-color: white;
+      border-bottom: 1px solid #f5f5f5;
+      margin: auto;
+      padding: 32px 16px;
+
+      &__box {
+        width: 343px;
+        height: 80px;
+        margin: auto;
+        display: flex;
+
+        &__image {
+          width: 80px;
+          height: 80px;
+          background-color: yellow; // あとで消す
+        }
+
+        &__money {
+          width: 247px;
+          height: 80px;
+          padding-left: 16px;
+          text-align: left;
+
+          p {
+            font-size: 14px;
+            padding-bottom: 8px;
+            padding-right: 8px;
+            text-align: left;
+          }
+  
+          span {
+            font-size: 15px;
+          }
+
+          .fee {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    
     &__contents {
       width: 700px;
-      min-height: 873px;
+      min-height: 776px;
       height: auto;
       background-color: white;
       margin: auto;
+
+      &__box {
+        width: 343px;
+        min-height: 523px;
+        height: auto;
+        margin: auto;
+
+        &__price {
+          border-bottom: 1px solid #f5f5f5;
+          margin: auto;
+          min-height: 130px;
+          height: auto;
+          width: 343px;
+
+
+          &__left {
+            width: 50%;
+            height: 50%;
+            float: left;
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+            padding-top: 40px;
+          }
+
+          &__right {
+            width: 50%;
+            height: 50%;
+            float: right;
+            text-align: right;
+            font-size: 30px;
+            font-weight: bold;
+            padding-top: 30px;
+          }
+
+          &__bottom {
+            width: 100%;
+            height: 30px;
+            clear: both;
+            display: flex;
+            align-items: center;
+
+            &__box {
+              width: 20px;
+              height: 20px;
+              border: 1px solid black;
+              border-radius: 3px;
+
+            }
+
+            p {
+              height: 30px;
+              line-height: 30px;
+              margin-left: 8px;
+              font-size: 14px;
+
+
+            }
+          }
+        }
+
+        &__payment {
+          min-height: 108px;
+          height: auto;
+          width: 100%;
+          border-bottom: 1px solid #f5f5f5;
+
+
+        }
+      }
     }
   }
 
