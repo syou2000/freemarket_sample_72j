@@ -25,7 +25,8 @@
   }
 
   &__main {
-    height: 100%;
+    min-height: 765px;
+    height: auto;
     width: 100vw;
 
     &__title {
@@ -90,7 +91,6 @@
     
     &__contents {
       width: 700px;
-      min-height: 776px;
       height: auto;
       background-color: white;
       margin: auto;
@@ -160,8 +160,72 @@
           height: auto;
           width: 100%;
           border-bottom: 1px solid #f5f5f5;
+          padding: 32px;
+          padding-left: 0;
+          text-align: left;
+          font-size: 14px;
 
+          h3 {
+            font-weight: bold;
+          }
 
+          &__way {
+            margin-top: 1px;
+            font-size: 14px;
+            color: #00a2ff;
+          }
+
+          span:hover {
+            text-decoration: underline;
+          }
+        }
+
+        &__address {
+          min-height: 151px;
+          height: auto;
+          width: 100%;
+          border-bottom: 1px solid #f5f5f5;
+          padding: 32px;
+          padding-left: 0;
+          padding-right: 0;
+          font-size: 14px;
+          
+
+          &__top {
+            p {
+              float: left;
+              font-weight: bold;
+            }
+
+            .changeAddress {
+            float: right;
+            text-decoration: none;
+            color: #00a2ff;
+            }
+
+            .changeAddress:hover {
+              text-decoration: underline;
+              opacity: 0.7;
+            }
+          }
+
+          &__bottom {
+            clear: both;
+            text-align: left;
+            padding-top: 8px;
+          }
+        }
+
+        .submitBtn {
+          display: block;
+          background-color: red;
+          width: 100%;
+          height: 50px;
+          margin-top: 32px;
+          line-height: 50px;
+          color: white;
+          font-weight: bold;
+          text-decoration: none;
         }
       }
     }
@@ -209,6 +273,10 @@
           img {
             width: 185px;
             height: 50px;
+          }
+
+          img:hover {
+            opacity: 0.7;
           }
         }
       }

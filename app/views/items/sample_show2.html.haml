@@ -27,8 +27,17 @@
         .purchasePage__main__contents__box__payment
           %h3 支払い方法
           .purchasePage__main__contents__box__payment__way
-            = icon("fas", "book")
-
+            =icon("far fa-plus-square", class: "icon")
+            %span 登録してください
+        .purchasePage__main__contents__box__address
+          .purchasePage__main__contents__box__address__top
+            %p 配送先
+            =link_to "変更する", "#", class: "changeAddress"
+          .purchasePage__main__contents__box__address__bottom
+            %p  〒150-0043
+            %p  東京都渋谷区道玄坂２丁目２３−１２
+            %p  山田太郎
+        =link_to "購入する", "#", class: "submitBtn"
   .purchasePage__footer
     .purchasePage__footer__inner
       %nav.purchasePage__footer__inner__nav
