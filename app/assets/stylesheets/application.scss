@@ -1,4 +1,6 @@
 @import "reset";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import "modules/top_page";
 @import "header";
 @import "main_intro";
@@ -9,3 +11,5 @@
 @import "main_brand";
 @import "banner";
 @import "footer";
+@import "items/purchase";
+@import "items/sample_show";
