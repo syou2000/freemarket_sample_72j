@@ -1,0 +1,43 @@
+.main
+  %section.mypage-user-icon
+    %figure
+      =image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", size: "60x60"
+    = link_to "#" do
+      %h2.bold ユーザー名
+      .mypage-number
+        .evaluation
+          評価
+          %span.bold 0
+        .exhibition_num
+          出品数
+          %span.bold 0
+  .tabs
+    %input#left{checked: "checked", name: "tab_item", type: "radio"}/
+    %label.tab_item{for: "left"} お知らせ
+    %input#right{name: "tab_item", type: "radio"}/
+    %label.tab_item{for: "right"} やることリスト
+    #left_content.tab_content
+      .tab_content_description
+        %p.c-txtsp お知らせの商品がありません
+    #right_content.tab_content
+      .tab_content_description
+        %p.c-txtsp やることリスト
+        %li.mypage-go-list
+          = link_to "#" do
+            一覧を見る
+  %aside.modal{"data-close": "modal", "data-modal": "banner"}
+    .modal-inner.modal-banner
+      %i.icon-close{"data-close": "modal"}
+  %section.mypage-tab-container
+    %h2.mypage-tab-head 購入した商品
+    .tabs
+      %input#lefts{checked: "checked", name: "tab_item", type: "radio"}/
+      %label.tab_item{for: "lefts"} 取引中
+      %input#rights{name: "tab_item", type: "radio"}/
+      %label.tab_item{for: "rights"} 過去の取引
+      #lefts_content.tab_content
+        .tab_content_description
+          %p.c-txtsp 取引中
+      #rights_content.tab_content
+        .tab_content_description
+          %p.c-txtsp 過去の取引

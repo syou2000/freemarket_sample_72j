@@ -1,0 +1,17 @@
+.top_page
+  = render "header"
+  = render "main_intro"
+  = render "main_service"
+  = render "main_info"
+  = render "main_features"
+  = render "main_category"
+  = render "main_brand"
+  = render "banner"
+  = render "footer"
+
+= link_to "#" do
+  .camera-btm
+    .camera-btm__text
+      出品する
+    .camera-btm__icon
+      = image_tag asset_path("icon/icon_camera.png"), size: "54x54"
