@@ -5,7 +5,7 @@
     .loginPage__main__contents
       .loginPage__main__contents__no-account
         %p アカウントをお持ちでない方はこちら
-        = link_to "新規会員登録", "#"
+        = link_to "新規会員登録", users_home_path
       .loginPage__main__contents__external-authenticate
         = link_to "#", class: "facebookBtn" do
           = icon('fab', 'facebook-square', class: 'facebookBtn-icon fa-2x')
