@@ -9,8 +9,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
     super
-    @user = User.new
+  end
+
+  def create
+    super
+    @user = User.new(user_params)
     @profile = @user.build_profile
+    if @profile.save
+    else
+      render :new
+    end
   end
 
   def authentication
@@ -19,6 +27,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def complete
   end
 
+
+  private
+  def user_params
+    params.permit(:email, :password, :first_name, :last_name, :first_name_kana, :last_name_kana, :phone_number, :year, :month, :day, profile_attributes: [:nickname])
+  end
   # POST /resource/registrations
 
   # POST /resource

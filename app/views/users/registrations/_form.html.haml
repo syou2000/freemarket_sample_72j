@@ -1,4 +1,4 @@
-= form_with model: @profile do |form|
+= form_with model: @profile, url: user_registration_path, local: true do |form|
   .form
     .form__top
       .form__top__nickname
@@ -13,7 +13,7 @@
           メールアドレス
           %span.form__top__mail__require
             必須
-        =form.text_field :email, placeholder: "PC・携帯どちらでも可", class: "mailForm"
+        =form.email_field :email, placeholder: "PC・携帯どちらでも可", class: "mailForm"
       .form__top__password
         .form__top__password__title
           パスワード

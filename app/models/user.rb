@@ -16,7 +16,9 @@ class User < ApplicationRecord
   validates :email,           presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :password,        presence: true, length: { minimum: 7 }
   validates :phone_number,    uniqueness: true
-  validates :birthday,        presence: true
+  validates :year,            presence: true
+  validates :month,            presence: true
+  validates :day,            presence: true
 
   # multiline :true
 end
