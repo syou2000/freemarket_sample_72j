@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     get 'users/authentication', to:'devise/registrations#authentication'
     get 'users/complete', to:'devise/registrations#complete'
   end
-  root 'items#index'
+  root 'top_page#index'
+  get "items/sample_show", to: "items#sample_show"
+  get "items/sample_show2", to: "items#sample_show2"
 end
