@@ -1,9 +1,11 @@
-.main {
+.main1 {
+  width: 100vw;
   background: #f8f8f8;
   &__show {
     padding: 40px;
     margin: 0 auto;
     &__contents {
+      // width: 100vw;
       width: 700px;
       margin: 0 auto;
       &--top {
@@ -138,6 +140,7 @@
               text-align: left;
             }
             .commentBtn {
+              cursor: pointer;
               font-size: 18px;
               line-height: 48px;
               background: #3CCACE;
