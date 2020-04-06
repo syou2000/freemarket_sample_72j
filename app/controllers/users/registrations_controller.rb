@@ -9,16 +9,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
     super
+    @user = User.new
+    @profile = @user.build_profile
   end
 
   def create
     super
+    # User.create(user_params)
     @user = User.new(user_params)
-    @profile = @user.build_profile
-    if @profile.save
-    else
-      render :new
-    end
+    # if @user.save
+    # else
+    #   render :new
+    # end
   end
 
   def authentication

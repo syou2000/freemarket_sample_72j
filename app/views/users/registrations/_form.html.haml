@@ -1,4 +1,4 @@
-= form_with model: @profile, url: user_registration_path, local: true do |form|
+= form_with scope: 'user', model: @user, url: user_registration_path, local: true do |form|
   .form
     .form__top
       .form__top__nickname
