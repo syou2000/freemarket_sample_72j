@@ -481,44 +481,16 @@
               margin-left: 3px;
               color: rgb(139, 139, 139);
             }
-            .birthDayFormYear {
-              width: 76px;
+
+            select {
               height: 48px;
+              width: 76px;
               border-radius: 3px;
               border: 1px solid rgb(139, 139, 139);
-              padding: 10px 16px 8px;
               outline: none;
             }
-    
-            .birthDayFormYear:focus {
-              border: 1px solid #0077ff;
-              border-radius: 3px;
-            }
-    
-            .birthDayFormMonth {
-              width: 76px;
-              height: 48px;
-              border-radius: 3px;
-              border: 1px solid rgb(139, 139, 139);
-              padding: 10px 16px 8px;
-              outline: none;
-            }
-    
-            .birthDayFormMonth:focus {
-              border: 1px solid #0077ff;
-              border-radius: 3px;
-            }
-    
-            .birthDayFormDay {
-              width: 76px;
-              height: 48px;
-              border-radius: 3px;
-              border: 1px solid rgb(139, 139, 139);
-              padding: 10px 16px 8px;
-              outline: none;
-            }
-    
-            .birthDayFormDay:focus {
+
+            select:focus {
               border: 1px solid #0077ff;
               border-radius: 3px;
             }
