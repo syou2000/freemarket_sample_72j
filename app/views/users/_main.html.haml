@@ -1,8 +1,8 @@
 .main
   %section.mypage-user-icon
     %figure
-      %img{alt: "", height: "60", src: "//static.mercdn.net/images/member_photo_noimage_thumb.png", width: "60"}/
-    %a{href: "#"}
+      =image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", size: "60x60"
+    = link_to "#" do
       %h2.bold ユーザー名
       .mypage-number
         .evaluation
