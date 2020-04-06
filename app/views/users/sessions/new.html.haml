@@ -14,17 +14,23 @@
           = icon('fab', 'google', class: 'googleBtn-icon fa-2x')
           Googleでログイン
       .loginPage__main__contents__form
-        %input.loginPage__main__contents__form--email_feild{name: "email", placeholder: "メールアドレス", type: "email", value: ""}
-        %input.loginPage__main__contents__form--password_feild{:name => "password", :placeholder => "パスワード", :type => "password", :value => ""}
-        %button.loginPage__main__contents__form--login{type: "submit"}
-          ログイン
+        = form_with scope:resource, as: resource_name, url: session_path(resource_name), local: true do |f|
+          = f.text_field :email, placeholder: "メールアドレス", autofocus: true, class: "loginPage__main__contents__form--email_feild"
+          = f.password_field :email, placeholder: "パスワード", autofocus: true, class: "loginPage__main__contents__form--password_feild"
+          =f.submit "ログイン", class: "loginPage__main__contents__form--login"
+
+        -# %input.loginPage__main__contents__form--email_feild{name: "email", placeholder: "メールアドレス", type: "email", value: ""}
+        -# %input.loginPage__main__contents__form--password_feild{:name => "password", :placeholder => "パスワード", :type => "password", :value => ""}
+
+        -# %button.loginPage__main__contents__form--login{type: "submit"}
+        -#   ログイン
         = link_to "パスワードをお忘れの方", new_user_password_path, class: "passwordForget"
 
 
-  .footer
-    .footer__inner
-      %nav.footer__inner__nav
-        %ul.footer__inner__nav__category
+  .footer1
+    .footer1__inner
+      %nav.footer1__inner__nav
+        %ul.footer1__inner__nav__category
           %li
             = link_to "プライバシーポリシー", "#", class: "privacyPolicy"
           %li
