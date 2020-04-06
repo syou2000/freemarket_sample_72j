@@ -23,7 +23,8 @@
       .tab_content_description
         %p.c-txtsp やることリスト
         %li.mypage-go-list
-          %a{href: "#"} 一覧を見る
+          = link_to "#" do
+            一覧を見る
   %aside.modal{"data-close": "modal", "data-modal": "banner"}
     .modal-inner.modal-banner
       %i.icon-close{"data-close": "modal"}
