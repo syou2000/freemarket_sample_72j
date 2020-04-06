@@ -1,0 +1,54 @@
+.purchasePage
+  .purchasePage__header
+    %h1
+      = link_to root_path do
+        = image_tag "logo.png", class: "login_logo"
+  .purchasePage__main
+    .purchasePage__main__title
+      %h2 購入内容の確認
+    .purchasePage__main__product
+      .purchasePage__main__product__box
+        .purchasePage__main__product__box__image
+          -# この行に投稿の写真を追加する
+        .purchasePage__main__product__box__money
+          %p サッカースパイク
+          %span ¥10,000
+          %span.fee (税込) 着払い
+    .purchasePage__main__contents
+      .purchasePage__main__contents__box
+        .purchasePage__main__contents__box__price
+          .purchasePage__main__contents__box__price__left
+            支払い金額
+          .purchasePage__main__contents__box__price__right
+            ¥10,000
+          .purchasePage__main__contents__box__price__bottom
+            .purchasePage__main__contents__box__price__bottom__box
+            %p ポイントを使用 (所持ポイント: P0)
+        .purchasePage__main__contents__box__payment
+          %h3 支払い方法
+          .purchasePage__main__contents__box__payment__way
+            =icon("far fa-plus-square", class: "icon")
+            %span 登録してください
+        .purchasePage__main__contents__box__address
+          .purchasePage__main__contents__box__address__top
+            %p 配送先
+            =link_to "変更する", "#", class: "changeAddress"
+          .purchasePage__main__contents__box__address__bottom
+            %p  〒150-0043
+            %p  東京都渋谷区道玄坂２丁目２３−１２
+            %p  山田太郎
+        =link_to "購入する", "#", class: "submitBtn"
+  .purchasePage__footer
+    .purchasePage__footer__inner
+      %nav.purchasePage__footer__inner__nav
+        %ul.purchasePage__footer__inner__nav__category
+          %li
+            = link_to "プライバシーポリシー", "#", class: "privacyPolicy"
+          %li
+            = link_to "フリマ利用規約", "#", class: "terms"
+          %li
+            = link_to "特定商取引に関する表記", "#", class: "notation"
+        .purchasePage__footer__inner__nav__logo
+          = link_to root_path do
+            = image_tag "logo-white.png"
+      %p &copy Furima, Inc.
