@@ -1,0 +1,43 @@
+.info {
+  background-image: image-url("pict/bg-topMiddleDl-pict.jpg");
+  background-position: bottom right;
+  height: 400px;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  &__interior {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    text-align: left;
+    max-width: 1040px;
+    width: 100%;
+    margin: 0 auto;
+    &__title {
+    a {
+      font-size: 30px;
+      font-weight: bold;
+      line-height: 1.4;
+      }
+    }
+    &__text {
+      font-size: 22px;
+      margin: 20px 0 30px;
+      line-height: 1.5;
+    }
+    &__icon {
+      display: flex;
+      &__app {
+        margin-top: 13px;
+        a {
+          width: 150px;
+        }
+      }
+      &__app:hover {
+        opacity: 0.5;
+      }
+      &__google:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}

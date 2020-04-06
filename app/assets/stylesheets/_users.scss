@@ -1,0 +1,150 @@
+.contents{
+  display: flex;
+  margin: 40px auto 0;
+  width: 1020px;
+}
+
+.sides{
+  width: 280px;
+  margin: 0 40px 40px 0;
+  display: flex;
+  flex-direction: column;
+  strong {
+    margin-top: 30px;
+  }
+  @mixin contentss{
+    &:hover{
+      color:#000;
+      background-color: #aaa;
+      cursor: pointer;
+    }
+    color: #555;
+    display: inline-block;
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    margin-bottom: 2px;
+    background-color: #ddd;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+  }  
+  .side{
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-left: 150px;
+    &__content-title{
+      @include contentss;
+    }
+  }
+  .side1__content-title{
+    @include contentss;
+  }
+  .side2__content-title{
+    @include contentss;
+  }
+}
+
+
+
+
+.main{
+  float: right;
+  width: 700px;
+  position: relative;
+  h2{
+    text-align: center;
+  }
+  section.mypage-user-icon{
+    background-image: image-url("header1.jpeg");
+    height: 200px;
+    padding: 20px;
+    figure {
+      text-align: center;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+      .mypage-number {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        .evaluation{
+          padding-right: 10px;
+        }
+      }
+    }
+    &__mypage-user-icon a {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      color: #333;
+      &__mypage-user-icon figure {
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        border-radius: 50%;
+      }
+    }
+  }
+  h2.mypage-tab-head{
+    margin-top: 40px;
+    background: #fafafa;
+    font-size: 16px;
+    line-height: 72px;
+    border-style: solid;
+    border-width: 0;
+  }  
+  .tabs {
+    height: 400px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 700px;
+    input[name="tab_item"] {
+      display: none;
+    }
+    .tab_item {
+      width: calc(100% / 2);
+      height: 50px;
+      border-bottom: 3px solid #5ab4bd;
+      background-color: #d9d9d9;
+      line-height: 50px;
+      font-size: 16px;
+      text-align: center;
+      color: #565656;
+      display: block;
+      float: left;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+    .tab_item:hover {
+      cursor: pointer;
+      opacity: 0.75;
+    }      
+    .tab_content {
+      display: none;
+      padding: 40px 40px 0;
+      clear: both;
+      overflow: hidden;
+    }
+    #left:checked ~ #left_content,
+    #right:checked ~ #right_content {
+      display: block;
+    }
+    #lefts:checked ~ #lefts_content,
+    #rights:checked ~ #rights_content {
+      display: block;
+    }
+    input:checked + .tab_item {
+      background-color: #5ab4bd;
+      color: #fff;
+    }
+  }
+}
