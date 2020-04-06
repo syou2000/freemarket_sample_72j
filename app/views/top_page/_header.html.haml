@@ -3,7 +3,8 @@
     .header__interior__main
       .header__interior__main__icon
         %href.tag
-          = image_tag "/assets/logo/logo.png", size: "150x45"
+          -# = image_tag "/assets/logo/logo.png", size: "150x45"
+          = image_tag asset_path("logo/logo.png"), size: "150x45"
       .header__interior__main__search-box
         = form_for ("") do |f|
           = f.text_field :content, class: 'form__search', placeholder: 'キーワードから探す'
