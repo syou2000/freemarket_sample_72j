@@ -13,9 +13,9 @@
 |state|string|null:false|
 |shipping_date|integer|null: false|
 |size|integer||
-|brand_id|integer|null: false|
-|category_id|integer|null: false|
-|user_id|integer|null: false|
+|brand_id|integer|null:false, foreign_key: true|
+|category_id|integer|null:false, foreign_key: true|
+|user_id|integer|null:false, foreign_key: true|
 |item_status|integer|null: false|
 
 ### Association
@@ -32,7 +32,7 @@
 |column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|item_id|integer|null: false|
+|item_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to item
@@ -64,7 +64,7 @@
 |last_name_kana|string|null: false|
 |phone_number|integer|null: false, unique: true|
 |birthday|datetime|null: false|
-|user_id|integer|null:false|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to user
@@ -73,8 +73,8 @@
 ## commentsテーブル
 |column|Type|Options|
 |------|----|-------|
-|user_id|string|null: false|
-|item_id|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 |text|text|null: false|
 
 ### Association
@@ -85,7 +85,7 @@
 ## latesテーブル
 |column|Type|Options|
 |------|----|-------|
-|user_id|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
 |text|text||
 |late|integer||
 
@@ -115,11 +115,11 @@
 - has_many brands through :brand-category
 
 
-## brand-categoryテーブル
+## brand-categoriesテーブル
 |column|Type|Options|
 |------|----|-------|
-|categories_id|integer|null: false|
-|brands_id|integer|null: false|
+|category_id|integer|null: false, foreign_key: true|
+|brand_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to bland
@@ -128,8 +128,8 @@
 ## messagesテーブル
 |column|Type|Options|
 |------|----|-------|
-|user_id|string|null: false|
-|item_id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 |text|text|null: false|
 
 ### Association
@@ -140,7 +140,7 @@
 ## addressesテーブル
 |column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
 |zip_code|integer|null: false, index: false|
 |city|string|null: false|
 |town|string|null: false|
