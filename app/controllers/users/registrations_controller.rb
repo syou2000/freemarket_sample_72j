@@ -17,6 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     User.create(user_params)
+    after_sign_up_path_for(resource)
     # @user = User.new(user_params)
     # if @user.save
     # else
@@ -25,7 +26,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def authentication
+    @user = User.find_by(email: params[:email])
+    @user.update(user_params)
+    after_sign_up_path_for2
   end
+
 
   def complete
   end
@@ -33,7 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
   def user_params
-    params.permit(:email, :password, :first_name, :last_name, :first_name_kana, :last_name_kana, :phone_number, :year, :month, :day, profile_attributes: [:nickname])
+    params.permit(:email, :password, :first_name, :last_name, :first_name_kana, :phone_number, :last_name_kana, :year, :month, :day, profile_attributes: [:nickname])
   end
   # POST /resource/registrations
 
@@ -66,7 +71,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -79,9 +84,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    super(resource)
+    "/users/#{@user.id}/authentication"
+  end
+
+  def after_sign_up_path_for2(resource)
+    super(resource)
+    users_complete_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
