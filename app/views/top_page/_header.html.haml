@@ -18,8 +18,8 @@
           = link_to('ブランド', root_path)
       .header__interior__nav__right
         .header__interior__nav__right__login
+        - unless user_signed_in?
           = link_to('ログイン', new_user_session_path)
         .header__interior__nav__right__new
           = link_to('新規会員登録', users_home_path)
-        - if user_signed_in?
           = link_to('ログアウト', destroy_user_session_path, method: :delete)
