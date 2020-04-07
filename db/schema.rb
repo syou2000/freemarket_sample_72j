@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_101417) do
     t.string "last_name", null: false
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
-    t.string "phone_number"
+    t.string "phone_number", default: ""
     t.integer "year", null: false
     t.integer "month", null: false
     t.integer "day", null: false

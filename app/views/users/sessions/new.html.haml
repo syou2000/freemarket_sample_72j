@@ -16,7 +16,7 @@
       .loginPage__main__contents__form
         = form_with scope:resource, as: resource_name, url: session_path(resource_name), local: true do |f|
           = f.text_field :email, placeholder: "メールアドレス", autofocus: true, class: "loginPage__main__contents__form--email_feild"
-          = f.password_field :email, placeholder: "パスワード", autofocus: true, class: "loginPage__main__contents__form--password_feild"
+          = f.password_field :password, placeholder: "パスワード", autofocus: true, class: "loginPage__main__contents__form--password_feild"
           =f.submit "ログイン", class: "loginPage__main__contents__form--login"
 
         -# %input.loginPage__main__contents__form--email_feild{name: "email", placeholder: "メールアドレス", type: "email", value: ""}
