@@ -18,18 +18,22 @@
         .authenticationPage__header__progress__bars__2
           .authenticationPage__header__progress__bars__2__circle3
   .authenticationPage__main
-    .authenticationPage__main__contents
-      %h2 電話番号の確認
-      .authenticationPage__main__contents__form
-        .authenticationPage__main__contents__form__title
-          携帯電話の確認
-          %span.authenticationPage__main__contents__form__require
-            任意
-        = form_with scope: 'user', model: @user, url: user_registration_path, local: true do |form|
-          =form.text_field :number, placeholder: "例)09012345678", class: "authenticationForm"
-          %p 電話番号を登録していただくことでアカウントのセキュリティーが向上します。
-          =form.submit "次へ進む", class: "toNextBtn"
-          %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+    = @user.each do |user|
+      .authenticationPage__main__contents
+        %h2 電話番号の確認
+        .authenticationPage__main__contents__form
+          .authenticationPage__main__contents__form__title
+            携帯電話の確認
+            %span.authenticationPage__main__contents__form__require
+              任意
+          = form_with scope: 'user', model: user, url: "/users/#{user.id}/authentication", local: true do |form|
+
+            =form.hidden_field :first_name, value: user.first_name
+
+            =form.text_field :number, placeholder: "例)09012345678", class: "authenticationForm"
+            %p 電話番号を登録していただくことでアカウントのセキュリティーが向上します。
+            =form.submit "次へ進む", class: "toNextBtn"
+            %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
 
   .authenticationPage__footer
     .authenticationPage__footer__inner

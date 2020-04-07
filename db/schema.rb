@@ -9,7 +9,35 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+
 ActiveRecord::Schema.define(version: 2020_04_07_062250) do
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "price", null: false
+    t.text "explain", null: false
+    t.integer "postage", null: false
+    t.string "region", null: false
+    t.string "state", null: false
+    t.integer "shipping_date", null: false
+    t.integer "size"
+    t.integer "brand_id", null: false
+    t.integer "category_id", null: false
+    t.integer "user_id", null: false
+    t.integer "item_status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_items_on_name"
+    t.index ["price"], name: "index_items_on_price"
+  end
+
+  create_table "items_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_items_images_on_item_id"
+  end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
@@ -42,34 +70,6 @@ ActiveRecord::Schema.define(version: 2020_04_07_062250) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "profiles", "users"
-
-  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "price", null: false
-    t.text "explain", null: false
-    t.integer "postage", null: false
-    t.string "region", null: false
-    t.string "state", null: false
-    t.integer "shipping_date", null: false
-    t.integer "size"
-    t.integer "brand_id", null: false
-    t.integer "category_id", null: false
-    t.integer "user_id", null: false
-    t.integer "item_status", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_items_on_name"
-    t.index ["price"], name: "index_items_on_price"
-  end
-
-  create_table "items_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
-    t.bigint "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_items_images_on_item_id"
-  end
-
   add_foreign_key "items_images", "items"
+  add_foreign_key "profiles", "users"
 end

@@ -25,11 +25,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # end
   end
 
-  def authentication
-    @user = User.find_by(email: params[:email])
-    @user.update(user_params)
-    after_sign_up_path_for2
-  end
+  # def authentication
+  #   @user = User.find_by(email: params[:email])
+  #   # @user_id = current_user.id
+  #   @user.update(user_params)
+  #   after_sign_up_path_for2
+  # end
 
 
   def complete
@@ -86,13 +87,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     super(resource)
-    "/users/#{@user.id}/authentication"
-  end
-
-  def after_sign_up_path_for2(resource)
-    super(resource)
+    # "/users/#{@user.id}/authentication"
     users_complete_path
   end
+
+  # def after_sign_up_path_for2(resource)
+  #   super(resource)
+  #   users_complete_path
+  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
