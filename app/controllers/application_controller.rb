@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   protect_from_forgery with: :exception
-
+  def destroy
+    
+    
+    redirect_to root_path
+  end
   private
 
   def production?
