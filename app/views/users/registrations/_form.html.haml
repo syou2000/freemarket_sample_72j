@@ -2,7 +2,7 @@
   .form
     .form__top
       .form__top__nickname
-        =form.fields_for :profile, @user.build_profile do |form|
+        =form.fields_for :profile, @profile do |form|
           .form__top__nickname__title
             ニックネーム
             %span.form__top__nickname__require 

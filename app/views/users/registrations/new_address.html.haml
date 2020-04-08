@@ -20,7 +20,7 @@
   .addressPage__main
     .addressPage__main__contents
       %h2 商品送付先住所情報
-      = form_with scope: 'user', model: @user, url: user_registration_path, local: true do |form|
+      = form_with scope: 'address', model: @address, url: addresses_path, local: true do |form|
         .addressPage__main__contents__form
           .addressPage__main__contents__form__kanji
             .addressPage__main__contents__form__kanji__title
