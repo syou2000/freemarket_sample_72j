@@ -8,16 +8,37 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def new
-    super
+    # super
     @user = User.new
     @user.build_profile
     # @profile = @user.build_profile
   end
 
   def create
-    super
+    # super
     User.create(user_params)
-    after_sign_up_path_for(resource)
+    @user = User.new(user_params)
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      render :new and return
+    end
+    session["devise.regist_data"] = {user: @user_attributes}
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    @address = @user.build_address
+    render :new_address
+    # after_sign_up_path_for(resource)
+  end
+
+  def create_address
+    @user = User.new(session["devise.regist_data"]["user"])
+    @address = Address.new(address_params)
+    unless @address.valid?
+      flash.now[:alert] = @address.errors.full_messages
+      render :new_address and return
+    end
+    @user.build_address(@address.attributes)
+    @user.save
+    sign_in(:user, @user)
   end
 
   def authentication
@@ -26,11 +47,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def complete
   end
 
-
-  private
+  protected
+  # private
+  
   def user_params
-    params.permit(:email, :password, :first_name, :last_name, :first_name_kana, :phone_number, :last_name_kana, :year, :month, :day, profile_attributes: [:nickname])
+    params.permit(:email, :password, :first_name, :last_name, :first_name_kana, :last_name_kana, :year, :month, :day, profile_attributes: [:nickname])
   end
+  
+  def address_params
+    params.require(:address).permit(:last_name, :first_name, :last_name_hurigana, :first_name_hurigana, :zip_code, :city, :building, :prefecture, :house_number, :phone_number)
+
+  end
+  
   # POST /resource/registrations
 
   # POST /resource
