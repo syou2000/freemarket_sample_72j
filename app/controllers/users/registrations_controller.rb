@@ -20,7 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     after_sign_up_path_for(resource)
   end
 
-  def authentication
+  def address
   end
 
   def complete
