@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2020_04_08_060345) do
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nickname", null: false
     t.string "user_icon"
     t.string "profile_text"
     t.integer "late_count"
@@ -68,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_04_08_060345) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nickname", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "first_name_kana", null: false

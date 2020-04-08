@@ -5,12 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one :profile
-  accepts_nested_attributes_for :profile
 
   has_one :address
 
   VALID_EMAIL_REGEX = /\A[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\z/
 
+  validates :nickname,        presence: true
   validates :first_name,      presence: true
   validates :last_name,       presence: true
   validates :first_name_kana, presence: true
@@ -21,5 +21,4 @@ class User < ApplicationRecord
   validates :month,           presence: true
   validates :day,             presence: true
 
-  # multiline :true
 end

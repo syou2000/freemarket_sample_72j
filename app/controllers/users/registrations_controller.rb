@@ -8,35 +8,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def new
-    # super
     @user = User.new
-    @user.build_profile
-    # @profile = @user.build_profile
   end
 
   def create
-    # super
-    # User.create(user_params)
     @user = User.new(sign_up_params)
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
     session["devise.regist_data"] = {user: @user.attributes}
-    session["devise.regist_data"][:user]["profile_attributes"]["nickname"] = params[:user][:profile_attributes][:nickname]
+["nickname"] = params[:user][:profile][:nickname]
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @profile = @user.build_profile
     @address = @user.build_address
     render :new_address
-    # after_sign_up_path_for(resource)
   end
 
   def new_address
-    # @address = Address.new
   end
 
   def create_address
-    binding.pry
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new(address_params)
     unless @address.valid?
@@ -104,6 +95,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    # devise_parameter_sanitizer.permit(:sign_up, keys: [profile_attributes: [:nickname]])
   end
 
   # # If you have extra params to permit, append them to the sanitizer.
