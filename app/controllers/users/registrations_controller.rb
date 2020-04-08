@@ -41,7 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     sign_in(:user, @user)
   end
 
-  def authentication
+  def address
   end
 
   def complete
