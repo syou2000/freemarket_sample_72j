@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   devise_scope :user do
     get 'users/home', to:'devise/registrations#index'
-    # get 'users/:id/authentication', to:'devise/registrations#authentication'
-    # patch 'users/:id/authentication', to:'devise/registrations#authentication'
-    # put 'users/:id/authentication', to:'devise/registrations#authentication'
+    get 'users/:id/authentication', to:'devise/registrations#authentication', as: :user_authentication
     get 'users/complete', to:'devise/registrations#complete'
   end
   root 'top_page#index'
