@@ -18,6 +18,9 @@
         .addressPage__header__progress__bars__2
           .addressPage__header__progress__bars__2__circle3
   .addressPage__main
+    - if flash.now[:alert]
+      .flash
+        = flash.now[:alert]
     .addressPage__main__contents
       %h2 商品送付先住所情報
       = form_with scope: 'address', model: @address, url: addresses_path, local: true do |form|

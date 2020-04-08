@@ -10,7 +10,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string  :building
       t.string  :prefecture
       t.string  :house_number,       allow_nil: true
-      t.string  :phone_number,       default: "", allow_nil: true
+      t.string  :phone_number,       default: "", allow_nil: true, unique: true
       t.references :user,            null: false, foreign_key: true
 
       t.timestamps

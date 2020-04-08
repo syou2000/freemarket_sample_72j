@@ -18,6 +18,9 @@
         .signUpPage__header__progress__bars__2
           .signUpPage__header__progress__bars__2__circle3
   .signUpPage__main
+    - if flash.now[:alert]
+      .flash
+        = flash.now[:alert]
     .signUpPage__main__title
       %h2 会員情報入力
     .signUpPage__main__contents
