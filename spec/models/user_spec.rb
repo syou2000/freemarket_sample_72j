@@ -108,8 +108,7 @@ describe User do
 
     it "passwordが7文字以上かつ英数字が１文字以上含まれていれば登録できること" do
       user = build(:user, password: "111111a", password_confirmation: "111111a")
-      user.valid?
-      expect(user.errors[:password]).to include("is invalid")
+      expect(user).to be_valid
     end
 
     it "passwordが存在してもpassword_confirmationがない場合は登録できないこと" do
