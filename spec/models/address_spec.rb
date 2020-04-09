@@ -6,7 +6,7 @@ describe Address do
 
   describe '#create' do
     #1
-    it "last_name, first_name, last_name_hurigana, first_name_hurigana, zip_code, prefecture, city, house_number, building, phone_number, userが存在すれば登録できる" do
+    it "last_name, first_name, last_name_hurigana, first_name_hurigana, zip_code, prefecture_id, city, house_number, building, phone_number, userが存在すれば登録できる" do
       address = build(:address)
       expect(address).to be_valid
     end
@@ -45,8 +45,8 @@ describe Address do
     end
 
     #7
-    it "prefectureがない場合は登録できない" do
-      address = build(:address, prefecture: nil)
+    it "prefecture_idがない場合は登録できない" do
+      address = build(:address, prefecture_id: nil)
       expect(address).to be_valid
     end
 

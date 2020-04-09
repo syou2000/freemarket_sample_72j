@@ -6,7 +6,8 @@ FactoryBot.define do
     last_name_hurigana        {"ヤマダ"}
     first_name_hurigana       {"タロウ"}
     zip_code                  {"0773454"}
-    prefecture                {"北海道"}
+    prefecture_id             {"1"}
+    # prefecture                {"id: 1, name: 北海道"}
     city                      {"旭川市"}
     house_number              {"1-1-1"}
     building                  {"ヤッホービル"}
@@ -17,7 +18,7 @@ FactoryBot.define do
     # last_name_hurigana        {"ヤマダ"}
     # first_name_hurigana       {"タロウ"}
     # zip_code                  {Faker::Number.number(digits:7)}
-    # prefecture                {"北海道"}
+    # prefecture_id             {"1"}
     # city                      {Faker::Address.city}
     # house_number              {"1-1-1"}
     # building                  {"#{Faker::Ancient.god}ビル#{Faker::Number.number(digits:3).to_s}号室"}
