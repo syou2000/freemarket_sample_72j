@@ -18,12 +18,6 @@
           = f.text_field :email, placeholder: "メールアドレス", autofocus: true, class: "loginPage__main__contents__form--email_feild"
           = f.password_field :password, placeholder: "パスワード", autofocus: true, class: "loginPage__main__contents__form--password_feild"
           =f.submit "ログイン", class: "loginPage__main__contents__form--login"
-
-        -# %input.loginPage__main__contents__form--email_feild{name: "email", placeholder: "メールアドレス", type: "email", value: ""}
-        -# %input.loginPage__main__contents__form--password_feild{:name => "password", :placeholder => "パスワード", :type => "password", :value => ""}
-
-        -# %button.loginPage__main__contents__form--login{type: "submit"}
-        -#   ログイン
         = link_to "パスワードをお忘れの方", new_user_password_path, class: "passwordForget"
 
 

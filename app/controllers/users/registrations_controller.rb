@@ -14,6 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     unless @user.valid?
+      # 追加実装にて、エラー文をより詳細に記述する予定です。その際に以下のコードが必要になるため、残しておきます。
       # flash.now[:alert] = @user.errors.full_messages
       flash.now[:alert] = "入力に誤りがあります"
       render :new and return
@@ -31,13 +32,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new(address_params)
     unless @address.valid?
+      # 追加実装にて、エラー文をより詳細に記述する予定です。その際に以下のコードが必要になるため、残しておきます。
       # flash.now[:alert] = @address.errors.full_messages
       flash.now[:alert] = "入力に誤りがあります"
       render :new_address and return
     end
     @user.build_address(@address.attributes)
-    @user.save
-    sign_in(:user, @user)
+    if @user.save
+      sign_in(:user, @user)
+    else
+      render :new and return
+    end
   end
 
   def address
@@ -46,40 +51,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def complete
   end
 
-  protected
-  # private
   
-  # def user_params
-  #   params.permit(:email, :password, :first_name, :last_name, :first_name_kana, :last_name_kana, :year, :month, :day, profile_attributes: [:nickname])
-  # end
   
-  def address_params
-    params.require(:address).permit(:last_name, :first_name, :last_name_hurigana, :first_name_hurigana, :zip_code, :city, :building, :prefecture, :house_number, :phone_number)
-
-  end
-  
-  # POST /resource/registrations
-
   # POST /resource
   # def create
   #   super
   # end
-
+  
   # GET /resource/edit
   # def edit
   #   super
   # end
-
+  
   # PUT /resource
   # def update
   #   super
   # end
-
+  
   # DELETE /resource
   # def destroy
   #   super
   # end
-
+  
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
@@ -88,11 +81,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
+  
   protected
+  
+  def address_params
+    params.require(:address).permit(:last_name, :first_name, :last_name_hurigana, :first_name_hurigana, :zip_code, :city, :building, :prefecture, :house_number, :phone_number)
 
-
-
+  end
+  
+  
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])

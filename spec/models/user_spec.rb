@@ -3,7 +3,7 @@ require 'rails_helper'
 describe User do
   describe '#create' do
 
-    it "nicknameとemail、password、password_comfirmation、first_name、last_name、first_name_kana、last_name_kana、year、month、dayが存在すれば登録できること" do
+    it "nicknameとemail、password、password_confirmation、first_name、last_name、first_name_kana、last_name_kana、year、month、dayが存在すれば登録できること" do
       user = build(:user)
       expect(user).to be_valid
     end

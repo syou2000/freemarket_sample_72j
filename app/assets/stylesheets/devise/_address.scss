@@ -371,12 +371,6 @@
           border-radius: 3px;
         }
 
-        p {
-          margin-top: 8px;
-          font-size: 14px;
-          color: rgb(139, 139, 139);
-        }
-
         &__houseNumber {
           width: 100%;
           min-height: 70px;
@@ -417,12 +411,6 @@
         .houseNumberForm:focus {
           border: 1px solid #0077ff;
           border-radius: 3px;
-        }
-
-        p {
-          margin-top: 8px;
-          font-size: 14px;
-          color: rgb(139, 139, 139);
         }
 
         &__building {
@@ -467,12 +455,6 @@
           border-radius: 3px;
         }
 
-        p {
-          margin-top: 8px;
-          font-size: 14px;
-          color: rgb(139, 139, 139);
-        }
-
         &__number {
           width: 100%;
           min-height: 70px;
@@ -513,12 +495,6 @@
         .numberForm:focus {
           border: 1px solid #0077ff;
           border-radius: 3px;
-        }
-
-        p {
-          margin-top: 8px;
-          font-size: 14px;
-          color: rgb(139, 139, 139);
         }
 
         .toNextBtn {
@@ -583,7 +559,6 @@
           }
 
           p {
-            font-family: Helvetica;
             text-align: center;
             small {
               font-size: 13px;
