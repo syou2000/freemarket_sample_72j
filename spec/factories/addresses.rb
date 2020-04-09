@@ -11,6 +11,7 @@ FactoryBot.define do
     house_number              {"1-1-1"}
     building                  {"ヤッホービル"}
     phone_number              {"08012345678"}
+    user
     # last_name                 {Faker::Name.last_name}
     # first_name                {Faker::Name.first_name}
     # last_name_hurigana        {"ヤマダ"}
