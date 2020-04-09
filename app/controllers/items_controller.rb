@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  def index
-    @items = Item.all
+
+  def new
   end
 
   def create
@@ -17,9 +17,9 @@ class ItemsController < ApplicationController
   def sample_show2
 
   end
-  private
-  def item_params
-    params.permit(:)
-  end
+  # private
+  # def item_params
+  #   params.permit(:)
+  # end
 
 end

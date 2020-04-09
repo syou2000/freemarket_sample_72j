@@ -9,8 +9,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string  :state,         null: false
       t.integer :shipping_date, null: false
       t.integer :size
-      t.integer :brand_id,      null: false
-      t.integer :category_id,   null: false
+      # t.integer :brand_id,      null: false
+      # t.integer :category_id,   null: false
       t.integer :user_id,       null: false
       t.integer :item_status,   null: false
       t.timestamps
