@@ -10,13 +10,15 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\z/
 
+  VALID_PASS_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i
+
   validates :nickname,        presence: true
   validates :first_name,      presence: true
   validates :last_name,       presence: true
   validates :first_name_kana, presence: true
   validates :last_name_kana,  presence: true
   validates :email,           presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :password,        presence: true, length: { minimum: 7 }
+  validates :password,        presence: true, length: { minimum: 7 }, format: { with: VALID_PASS_REGEX}
   validates :year,            presence: true
   validates :month,           presence: true
   validates :day,             presence: true
