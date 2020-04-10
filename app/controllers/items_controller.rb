@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.item_images.new
   end
 
   def create
@@ -27,7 +28,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :explain, :postage, :prefecture, :shipping_date, :item_status)
+    params.require(:item).permit(:name, :price, :explain, :postage, :prefecture, :shipping_date, :item_status, item_images_attributes: [:image])
     # .merge(user_id: current_user.id) これをparamsの末尾につける
   end
 
