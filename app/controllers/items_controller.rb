@@ -10,8 +10,12 @@ class ItemsController < ApplicationController
   def destroy
   end
 
-  def sample_show
+  def edit 
 
+  end
+
+  def sample_show
+    @comments = Comment.all
   end
 
   def sample_show2
@@ -19,7 +23,7 @@ class ItemsController < ApplicationController
   end
   private
   def item_params
-    params.permit(:)
+    # params.permit(:)
   end
 
 end
