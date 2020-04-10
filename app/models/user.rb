@@ -23,4 +23,8 @@ class User < ApplicationRecord
   validates :month,           presence: true
   validates :day,             presence: true
 
+  def profile
+    return Profile.find_by(user_id: self.id)
+  end
+
 end
