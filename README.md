@@ -38,7 +38,7 @@
 - belongs_to item
 
 
-## usersテーブル
+## profielesテーブル
 |column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false, index:true|
@@ -55,7 +55,7 @@
 - has_one profiels
 
 
-## profielesテーブル
+## usersテーブル
 |column|Type|Options|
 |------|----|-------|
 |first_name|string|null: false|
@@ -143,9 +143,14 @@
 |user_id|integer|null: false, foreign_key: true|
 |zip_code|integer|null: false, index: false|
 |city|string|null: false|
-|town|string|null: false|
-|bulding|string|null: false|
-|prefecture_number|integer|null: false|
+|house_number|string|null: false|
+|building|string|null: false|
+|prefecture|string|null: false|
+|phone_number|integer|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_hurigana|string|null: false|
+|first_name_hurigana|string|null: false|
 
 ### Association
 - belongs_to user
