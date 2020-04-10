@@ -211,7 +211,6 @@
           &__choose {
             margin-top: 20px;
             select {
-              -webkit-appearance: none;
               background-color: #fff;
               border: 1px solid #ccc;
               border-radius: 4px;
@@ -266,12 +265,11 @@
             }
           }
           &__bottom {
-            .changes {
+            select {
               width: 620px;
               height: 48px;
               border: 1px solid #ccc;
               background-color: white;
-              -webkit-appearance: none;
               outline: none;
               padding: 0 56px 0 16px;
               color: #222;
@@ -302,12 +300,11 @@
             }
           }
           &__bottom {
-            .changes {
+            select {
               width: 620px;
               height: 48px;
               border: 1px solid #ccc;
               background-color: white;
-              -webkit-appearance: none;
               outline: none;
               padding: 0 56px 0 16px;
               color: #222;
@@ -338,12 +335,11 @@
             }
           }
           &__bottom {
-            .changes {
+            select {
               width: 620px;
               height: 48px;
               border: 1px solid #ccc;
               background-color: white;
-              -webkit-appearance: none;
               outline: none;
               padding: 0 56px 0 16px;
               color: #222;
@@ -437,7 +433,7 @@
           height: 211px;
           width: 620px;
           margin: auto;
-          .finish {
+          input {
             background-color: red;
             height: 48px;
             width: 360px;

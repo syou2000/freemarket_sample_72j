@@ -10,13 +10,12 @@
 |explain|text|null: false|
 |postage|integer|nullfalse|
 |region|string|null:false|
-|state|string|null:false|
+|prefecture|string|null:false|
 |shipping_date|integer|null: false|
-|size|integer||
 |brand_id|integer|null:false, foreign_key: true|
 |category_id|integer|null:false, foreign_key: true|
 |user_id|integer|null:false, foreign_key: true|
-|item_status|integer|null: false|
+|item_status|string|null: false|
 
 ### Association
 - has_many comments
@@ -145,7 +144,7 @@
 |city|string|null: false|
 |town|string|null: false|
 |bulding|string|null: false|
-|prefecture_number|integer|null: false|
+|prefecture|integer|null: false|
 
 ### Association
 - belongs_to user
