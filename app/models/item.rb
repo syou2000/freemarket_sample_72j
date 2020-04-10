@@ -1,11 +1,11 @@
 class Item < ApplicationRecord
-  has_many :comments
+  has_many :comments,    dependent: :destroy
   has_many :messages
-  has_many :item_images
+  has_many :item_images, dependent: :destroy
   belongs_to :category
   belongs_to :user
   belongs_to :brand
-  has_one :late
+  has_one :late,         dependent: :delete
 
   def items_images
     return ItemsImage.find_by(item_id: self.id)
@@ -15,7 +15,4 @@ class Item < ApplicationRecord
     return User.find_by(id: self.user_id)
   end
 
-  # def profiles
-  #   return Profile.find_by(user_id: self.id)
-  # end
 end
