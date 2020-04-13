@@ -11,21 +11,20 @@
             %span.required 必須
             %p 最大10枚までアップロードできます
           .exhibitionPage__main__contents__image__explanation
-            #preview
-              - if @item.persisted?
-                - @item.item_images.each_with_index do |item_image, i|
-                  = image_tag item_image.image.url, data: { index: i }, width: "115", height: '118'
-              = form.fields_for :item_images do |item_image|
-                .js-file_group{"data-index" => "#{item_image.index}"}
-                  = item_image.label :image, class: 'form__mask__image' do
-                    .js-file_group__texts
-                      = item_image.file_field :image, class: 'hidden'
-                    .js-file_group__texts__text
-                      .js-file_group__texts__text__icon
-                        = icon('fas', 'camera fa-2x', class: 'icon')
-                      .js-file_group__texts__text__instruction
-                        クリックしてファイルをアップロード
-                    %p.js-remove 削除
+            = form.fields_for :item_images do |item_image|
+              .js-file_group{"data-index" => "#{item_image.index}"}
+                = item_image.label :image, class: 'form__mask__image' do
+                  .js-file_group__texts
+                    = item_image.file_field :image, class: 'hidden'
+                  .js-file_group__texts__text
+                    - if @item.persisted?
+                      - @item.item_images.each_with_index do |item_image, i|
+                        = image_tag item_image.image.url, data: { index: i }, width: "115", height: '118'
+                    .js-file_group__texts__text__icon
+                      = icon('fas', 'camera fa-2x', class: 'icon')
+                    .js-file_group__texts__text__instruction
+                      クリックしてファイルをアップロード
+                %p.js-remove 削除
               - if @item.persisted?
                 = item_image.check_box :_destroy, data:{ index: item_image.index }, class: 'hidden-destroy'
         .exhibitionPage__main__contents__product
@@ -44,18 +43,18 @@
         .exhibitionPage__main__contents__detail
           .exhibitionPage__main__contents__detail__title
             %h1 商品の詳細
-          .exhibitionPage__main__contents__detail__category
-            .exhibitionPage__main__contents__detail__category__title
-              %label.sab-title カテゴリー
-              %span.required 必須
-            .exhibitionPage__main__contents__detail__category__choose
-              =form.select :categry_id, ["選択してください"], [["レディース", 1],["メンズ", 2],["ベビー・キッズ", 3],["インテリア・住まい・小物", 4]]
+          -# .exhibitionPage__main__contents__detail__category
+          -#   .exhibitionPage__main__contents__detail__category__title
+          -#     %label.sab-title カテゴリー
+          -#     %span.required 必須
+          -#   .exhibitionPage__main__contents__detail__category__choose
+          -#     =form.select :categry, [["レディース", 1],["メンズ", 2],["ベビー・キッズ", 3],["インテリア・住まい・小物", 4]]
           .exhibitionPage__main__contents__detail__brand
             .exhibitionPage__main__contents__detail__brand__title
               %label.sab-title ブランド
               %span 任意
             .exhibitionPage__main__contents__detail__brand__text
-              =form.select :brand_id, [["選択してください"],["シャネル", 1],["ナイキ", 2],["ルイヴィトン", 3],["シュプリーム", 4],["アディダス", 5]]
+              =form.select :brand, [["シャネル", 1],["ナイキ", 2],["ルイヴィトン", 3],["シュプリーム", 4],["アディダス", 5]]
           .exhibitionPage__main__contents__detail__condition
             .exhibitionPage__main__contents__detail__condition__title
               %label.sab-title 商品の状態
