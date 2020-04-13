@@ -16,17 +16,24 @@
                 = item_image.label :image, class: 'form__mask__image' do
                   .js-file_group__texts
                     = item_image.file_field :image, class: 'hidden'
-                  .js-file_group__texts__text
-                    - if @item.persisted?
-                      - @item.item_images.each_with_index do |item_image, i|
-                        = image_tag item_image.image.url, data: { index: i }, width: "115", height: '118'
-                    .js-file_group__texts__text__icon
-                      = icon('fas', 'camera fa-2x', class: 'icon')
-                    .js-file_group__texts__text__instruction
-                      クリックしてファイルをアップロード
+                    .js-file_group__texts__text
+                      #previews
+                      - if @item.persisted?
+                        - @item.item_images.each_with_index do |item_image, i|
+                          = image_tag item_image.image.url, data: { index: i }, width: "115", height: '118'
+                      - else
+                        .js-file_group__texts__text__icon
+                          = icon('fas', 'camera fa-2x', class: 'icon')
+                        .js-file_group__texts__text__instruction
+                          クリックしてファイルをアップロード
                 %p.js-remove 削除
               - if @item.persisted?
                 = item_image.check_box :_destroy, data:{ index: item_image.index }, class: 'hidden-destroy'
+            - if @item.persisted?
+              .js-file_group{"data-index" => "#{@item.item_images.count}"}
+                = file_field_tag :image, name: "item[images_attributes][#{@item.item_images.count}][image]", class: 'form__mask__image'
+                %p.js-remove 削除
+
         .exhibitionPage__main__contents__product
           .exhibitionPage__main__contents__product__name-box
             .exhibitionPage__main__contents__product__name-box__name

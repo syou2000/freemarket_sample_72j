@@ -33,7 +33,7 @@ $(document).on('turbolinks:load', ()=> {
 
   $('.hidden-destroy').hide();
 
-  $('.exhibitionPage__main__contents__image__explanation').on('change', '.js-file', function(e) {
+  $('.exhibitionPage__main__contents__image__explanation').on('change', '.form__mask__image', function(e) {
     const targetIndex = $(this).parent().data('index');
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
@@ -63,6 +63,6 @@ $(document).on('turbolinks:load', ()=> {
     $(`img[data-index="${targetIndex}"]`).remove();
 
     // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('.exhibitionPage__main__contents__image__explanation').append(buildFileField(fileIndex[0]));
+    if ($('.form__mask__image').length == 0) $('.exhibitionPage__main__contents__image__explanation').append(buildFileField(fileIndex[0]));
   });
 });
