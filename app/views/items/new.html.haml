@@ -9,17 +9,25 @@
           .exhibitionPage__main__contents__image__title
             %label.sab-title 出品画像
             %span.required 必須
-          .exhibitionPage__main__contents__image__explanation
             %p 最大10枚までアップロードできます
-            = form.fields_for :item_images do |i|
-              = form.label :image, class: 'form__mask__image' do
-                .exhibitionPage__main__contents__image__texts
-                  = form.file_field :image, class: 'hidden'
-                .exhibitionPage__main__contents__image__texts__text
-                  .exhibitionPage__main__contents__image__texts__text__icon
-                    = icon('fas', 'camera fa-2x', class: 'icon')
-                  .exhibitionPage__main__contents__image__texts__text__instruction
-                    クリックしてファイルをアップロード
+          .exhibitionPage__main__contents__image__explanation
+            #preview
+              - if @item.persisted?
+                - @item.item_images.each_with_index do |item_image, i|
+                  = image_tag item_image.image.url, data: { index: i }, width: "115", height: '118'
+              = form.fields_for :item_images do |item_image|
+                .js-file_group{"data-index" => "#{item_image.index}"}
+                  = item_image.label :image, class: 'form__mask__image' do
+                    .js-file_group__texts
+                      = item_image.file_field :image, class: 'hidden'
+                    .js-file_group__texts__text
+                      .js-file_group__texts__text__icon
+                        = icon('fas', 'camera fa-2x', class: 'icon')
+                      .js-file_group__texts__text__instruction
+                        クリックしてファイルをアップロード
+                    %p.js-remove 削除
+              - if @item.persisted?
+                = item_image.check_box :_destroy, data:{ index: item_image.index }, class: 'hidden-destroy'
         .exhibitionPage__main__contents__product
           .exhibitionPage__main__contents__product__name-box
             .exhibitionPage__main__contents__product__name-box__name
