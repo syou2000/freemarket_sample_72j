@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_043123) do
+ActiveRecord::Schema.define(version: 2020_04_13_031102) do
+
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
@@ -27,6 +39,8 @@ ActiveRecord::Schema.define(version: 2020_04_10_043123) do
     t.string "postage", null: false
     t.string "prefecture", null: false
     t.string "shipping_date", null: false
+    t.integer "brand_id"
+    t.integer "category_id", null: false
     t.string "item_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

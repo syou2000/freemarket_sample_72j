@@ -183,7 +183,6 @@
           &__choose {
             margin-top: 20px;
             select {
-              -webkit-appearance: none;
               background-color: #fff;
               border: 1px solid #ccc;
               border-radius: 4px;
@@ -202,13 +201,13 @@
           margin-top: 20px;
           &__title {
             span {
-              font-size: 15px;
-              padding: 0 4px;
               background-color: #979495;
-              color: #fff;
+              color: white;
+              font-size: 12px;
               margin-left: 8px;
               border-radius: 2px;
-              font-weight: bold;
+              margin-top: 2px;
+              padding: 2px 4px;
             }
           }
           &__text {
@@ -216,19 +215,18 @@
             display: inline-flex;
             width: 100%;
             margin-top: 20px;
-            .brand_text {
-              display: inline-block;
-              position: relative;
+            select {
+              background-color: #fff;
               border: 1px solid #ccc;
               border-radius: 4px;
-              box-sizing: border-box;
-              font-family: inherit;
-              font-size: inherit;
+              color: #222;
+              font-size: 16px;
               height: 48px;
+              line-height: 1;
               margin: 0;
               outline: none;
-              padding: 0 16px;
-              width: inherit;
+              padding: 0 56px 0 16px;
+              width: 100%;
             }
           }
         }
