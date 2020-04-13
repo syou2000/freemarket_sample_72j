@@ -66,7 +66,6 @@ set :rails_env, "production"
 set :unicorn_rack_env, "production"
 
 set :ssh_options, {
-  port: 3000,#XXXにポート番号
   keys: [File.expand_path('~/.ssh/id_rsa')],#'~/.ssh/id_rsa'部分をローカル環境の鍵のパスに
   forward_agent: true,
   auth_methods: %w(publickey)
