@@ -15,4 +15,8 @@ class Item < ApplicationRecord
     return User.find_by(id: self.user_id)
   end
 
+  # def brand
+  #   return Brand.find_by(id: self.id)
+  # end
+
 end
