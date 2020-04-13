@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .category {
   padding: 60px 0;
   background-color: #f8f8f8;
@@ -23,9 +27,9 @@
       width: 780px;
       margin: 26px auto;
       display: flex;
-      // justify-content: space-around;
       flex-wrap: wrap;
       &__list {
+        position: relative;
         background-color: white;
         width: 220px;
         margin: 20px;
@@ -34,6 +38,35 @@
           .image {
             width: 220px;
             height: 150px;
+          }
+        }
+        &__sold {
+          position: absolute;
+          top:0;
+          left: 0;
+          z-index: 100;
+          width: 120px;
+          height:120px;
+          overflow: hidden;
+          &__inner{
+            margin-top: 13px;
+            font-size: 28px;
+            color: #fff;
+            transform: rotate(-45deg);
+            p{
+            }
+            &__back{
+              background-color: #EA352E;
+              position: absolute;
+              left: -65px;
+              top: -62px;
+              z-index: -1;
+              border-top: 0;
+              border-right: 100px solid white;
+              border-bottom: 100px solid transparent;
+              border-left: 100px solid white;
+              top: -62px;
+            }
           }
         }
         &__text {

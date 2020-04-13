@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_133948) do
+ActiveRecord::Schema.define(version: 2020_04_13_101121) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 2020_04_10_133948) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "buyers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_buyers_on_item_id"
+    t.index ["user_id"], name: "index_buyers_on_user_id"
+  end
+
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "price", null: false
@@ -42,7 +51,9 @@ ActiveRecord::Schema.define(version: 2020_04_10_133948) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "brand_id"
+    t.bigint "buyer_id"
     t.index ["brand_id"], name: "index_items_on_brand_id"
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
     t.index ["user_id"], name: "index_items_on_user_id"
@@ -82,13 +93,19 @@ ActiveRecord::Schema.define(version: 2020_04_10_133948) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "buyer_id"
+    t.index ["buyer_id"], name: "index_users_on_buyer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname"], name: "index_users_on_nickname"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "buyers", "items"
+  add_foreign_key "buyers", "users"
   add_foreign_key "items", "brands"
+  add_foreign_key "items", "buyers"
   add_foreign_key "items_images", "items"
   add_foreign_key "profiles", "users"
+  add_foreign_key "users", "buyers"
 end

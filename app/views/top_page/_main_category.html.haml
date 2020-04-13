@@ -8,7 +8,14 @@
       - @items.first(6).each do |item|
         %li.category__box__lists__list
           .category__box__lists__list__image
-            =link_to image_tag( item.items_images.image.to_s, class:"image"), root_path
+            - if item.buyer_id.present?
+              =link_to image_tag( item.items_images.image.to_s, class:"image"), root_path
+              .category__box__lists__list__sold
+                .category__box__lists__list__sold__inner
+                  %p SOLD
+                  .category__box__lists__list__sold__inner__back
+            - else
+              =link_to image_tag( item.items_images.image.to_s, class:"image"), root_path
           .category__box__lists__list__text
             .category__box__lists__list__text__name
               = item.name
@@ -21,3 +28,4 @@
                   = icon('fa', 'star')
                 .category__box__lists__list__text__data__quality__value
                   = item.user.profile.late_count
+

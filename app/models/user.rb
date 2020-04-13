@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_one :address, dependent: :destroy
   has_many :items, dependent: :destroy
+  has_many :buyeres
 
   VALID_EMAIL_REGEX = /\A[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\z/
 

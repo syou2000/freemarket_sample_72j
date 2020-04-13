@@ -12,11 +12,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    # binding.pry
     @user = User.new(sign_up_params)
     unless @user.valid?
       # 追加実装にて、エラー文をより詳細に記述する予定です。その際に以下のコードが必要になるため、残しておきます。
-      # flash.now[:alert] = @user.errors.full_messages
-      flash.now[:alert] = "入力に誤りがあります"
+      flash.now[:alert] = @user.errors.full_messages
+      # flash.now[:alert] = "入力に誤りがあります"
       render :new and return
     end
     session["devise.regist_data"] = {user: @user.attributes}
@@ -33,8 +34,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @address = Address.new(address_params)
     unless @address.valid?
       # 追加実装にて、エラー文をより詳細に記述する予定です。その際に以下のコードが必要になるため、残しておきます。
-      # flash.now[:alert] = @address.errors.full_messages
-      flash.now[:alert] = "入力に誤りがあります"
+      flash.now[:alert] = @address.errors.full_messages
+      # flash.now[:alert] = "入力に誤りがあります"
       render :new_address and return
     end
     @user.build_address(@address.attributes)
