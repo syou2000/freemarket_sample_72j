@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   end
 
   def sample_show
-    @comments = Comment.all
+  
   end
 
   def sample_show2
