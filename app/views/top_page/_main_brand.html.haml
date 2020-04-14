@@ -8,25 +8,25 @@
       - @brands.first(6).each do |brand|
         %li.brand__box__lists__list
           .brand__box__lists__list__image
-            - if brand.items.buyer_id.present?
-              =link_to image_tag(brand.items.items_images.image.to_s, class:"image"), root_path
+            - if brand.item.buyer_id.present?
+              =link_to image_tag(brand.item.item_image.image.to_s, class:"image"), root_path
               .brand__box__lists__list__sold
                 .brand__box__lists__list__sold__inner
                   %p SOLD
                   .brand__box__lists__list__sold__inner__back
             - else
-              =link_to image_tag(brand.items.items_images.image.to_s, class:"image"), root_path
+              =link_to image_tag(brand.item.item_image.image.to_s, class:"image"), root_path
 
           .brand__box__lists__list__text
             .brand__box__lists__list__text__name
-              = brand.items.name
+              = brand.item.name
             .brand__box__lists__list__text__data
               .brand__box__lists__list__text__data__price
-                = brand.items.price + "円"
+                = brand.item.price + "円"
                 %p (税込)
               .brand__box__lists__list__text__data__quality
                 .brand__box__lists__list__text__data__quality__icon
                   = icon('fa', 'star')
                 .brand__box__lists__list__text__data__quality__value
-                  = brand.items.user.profile.late_count
+                  = brand.item.user.profile.late_count
  

@@ -24,8 +24,9 @@ class User < ApplicationRecord
   validates :month,           presence: true
   validates :day,             presence: true
 
-  def profile
-    return Profile.find_by(user_id: self.id)
-  end
+  # profileモデルとuserモデルのアソシエーションはうまくいっている、参考までに残しているが、最後には削除する
+  # def profile
+  #   return Profile.find_by(user_id: self.id)
+  # end
 
 end
