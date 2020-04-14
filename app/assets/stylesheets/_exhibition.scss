@@ -390,7 +390,8 @@
           font-weight: bold;
         }
         &__info {
-          height: 241px;
+          max-height: 241px;
+          height: auto;
           width: 620px;
           margin: auto;
           &__value {
@@ -415,7 +416,7 @@
               margin-right: 8px;
               margin-left: 220px;
             }
-            input {
+            #changes {
               height: 48px;
               width: 285px;
               border: 1px solid #ccc;

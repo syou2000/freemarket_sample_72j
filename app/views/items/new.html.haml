@@ -50,18 +50,18 @@
         .exhibitionPage__main__contents__detail
           .exhibitionPage__main__contents__detail__title
             %h1 商品の詳細
-          -# .exhibitionPage__main__contents__detail__category
-          -#   .exhibitionPage__main__contents__detail__category__title
-          -#     %label.sab-title カテゴリー
-          -#     %span.required 必須
-          -#   .exhibitionPage__main__contents__detail__category__choose
-          -#     =form.select :categry, [["レディース", 1],["メンズ", 2],["ベビー・キッズ", 3],["インテリア・住まい・小物", 4]]
+          .exhibitionPage__main__contents__detail__category
+            .exhibitionPage__main__contents__detail__category__title
+              %label.sab-title カテゴリー
+              %span.required 必須
+            .exhibitionPage__main__contents__detail__category__choose
+              =form.select :category, [[""],["レディース", 1],["メンズ", 2],["ベビー・キッズ", 3],["インテリア・住まい・小物", 4]]
           .exhibitionPage__main__contents__detail__brand
             .exhibitionPage__main__contents__detail__brand__title
               %label.sab-title ブランド
               %span 任意
             .exhibitionPage__main__contents__detail__brand__text
-              =form.select :brand, [["シャネル", 1],["ナイキ", 2],["ルイヴィトン", 3],["シュプリーム", 4],["アディダス", 5]]
+              =form.select :brand, [[""],["シャネル", 1],["ナイキ", 2],["ルイヴィトン", 3],["シュプリーム", 4],["アディダス", 5]]
           .exhibitionPage__main__contents__detail__condition
             .exhibitionPage__main__contents__detail__condition__title
               %label.sab-title 商品の状態
@@ -97,15 +97,16 @@
               販売価格
               %span.tag 必須
               %span.mark ¥
-              =form.number_field :price, class: "changes", placeholder: "0"
+              =form.number_field :price, id: "changes", placeholder: "0"
             .exhibition__price__info__fee
-              販売手数料（10%）
-              %span -
-            .exhibition__price__info__half-way
-              -
-            .exhibition__price__info__profit
-              販売利益
-              %span -
+            -# 追加実装用↓
+            -#   販売手数料（10%）
+            -#   #fee -
+            -# .exhibition__price__info__half-way
+            -# .exhibition__price__info__profit
+            -#   販売利益
+            -#   #result -
+
           .exhibition__price__selection
             =form.submit '投稿する', class: 'exhibition__price__selection.finish'
             %button.saving 下書きに保存
