@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    # binding.pry
     @user = User.new(sign_up_params)
     unless @user.valid?
       # 追加実装にて、エラー文をより詳細に記述する予定です。その際に以下のコードが必要になるため、残しておきます。
