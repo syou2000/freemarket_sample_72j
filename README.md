@@ -10,12 +10,14 @@
 |explain|text|null: false|
 |postage|integer|nullfalse|
 |region|string|null:false|
-|prefecture|string|null:false|
+|state|string|null:false|
 |shipping_date|integer|null: false|
+|size|integer||
 |brand_id|integer|null:false, foreign_key: true|
 |category_id|integer|null:false, foreign_key: true|
 |user_id|integer|null:false, foreign_key: true|
 |item_status|string|null: false|
+|buyer_id|integer|null: false|
 
 ### Association
 - has_many comments
@@ -26,7 +28,6 @@
 - has_many item_images
 - has_one late
 
-
 ## item_imagesテーブル
 |column|Type|Options|
 |------|----|-------|
@@ -36,8 +37,7 @@
 ### Association
 - belongs_to item
 
-
-## usersテーブル
+## profielesテーブル
 |column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false, index:true|
@@ -53,8 +53,7 @@
 - has_one address
 - has_one profiels
 
-
-## profielesテーブル
+## usersテーブル
 |column|Type|Options|
 |------|----|-------|
 |first_name|string|null: false|
@@ -68,7 +67,6 @@
 ### Association
 - belongs_to user
 
-
 ## commentsテーブル
 |column|Type|Options|
 |------|----|-------|
@@ -79,7 +77,6 @@
 ### Association
 - belongs_to user
 - belongs_to item 
-
 
 ## latesテーブル
 |column|Type|Options|
@@ -92,8 +89,6 @@
 - belongs_to user
 - belongs_to item
 
-
-
 ## brandsテーブル
 |column|Type|Options|
 |------|----|-------|
@@ -103,7 +98,6 @@
 - has_many items
 - has_many categories through :brand-category
 
-
 ## categoriesテーブル
 |column|Type|Options|
 |------|----|-------|
@@ -112,7 +106,6 @@
 ### Association
 - has_many items
 - has_many brands through :brand-category
-
 
 ## brand-categoriesテーブル
 |column|Type|Options|
@@ -135,16 +128,31 @@
 - belongs_to user
 - belongs_to item
 
-
 ## addressesテーブル
 |column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |zip_code|integer|null: false, index: false|
 |city|string|null: false|
-|town|string|null: false|
-|bulding|string|null: false|
-|prefecture|integer|null: false|
+|house_number|string|null: false|
+|building|string|null: false|
+|prefecture_id|string|null: false|
+|phone_number|integer|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_hurigana|string|null: false|
+|first_name_hurigana|string|null: false|
+
+### Association
+- belongs_to user
+
+## cardsテーブル
+|column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|number|integer|null: false|
+|expiration|date|null: false|
+|security_code|integer|null: false|
 
 ### Association
 - belongs_to user
