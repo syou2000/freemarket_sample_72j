@@ -9,31 +9,19 @@
           .exhibitionPage__main__contents__image__title
             %label.sab-title 出品画像
             %span.required 必須
-            %p 最大10枚までアップロードできます
+            %p 最大5枚までアップロードできます
           .exhibitionPage__main__contents__image__explanation
-            = form.fields_for :item_images do |item_image|
-              .js-file_group{"data-index" => "#{item_image.index}"}
-                = item_image.label :image, class: 'form__mask__image' do
-                  .js-file_group__texts
-                    = item_image.file_field :image, class: 'hidden'
-                    .js-file_group__texts__text
-                      #previews
-                      - if @item.persisted?
-                        - @item.item_images.each_with_index do |item_image, i|
-                          = image_tag item_image.image.url, data: { index: i }, width: "115", height: '118'
-                      - else
-                        .js-file_group__texts__text__icon
-                          = icon('fas', 'camera fa-2x', class: 'icon')
-                        .js-file_group__texts__text__instruction
-                          クリックしてファイルをアップロード
-                %p.js-remove 削除
-              - if @item.persisted?
-                = item_image.check_box :_destroy, data:{ index: item_image.index }, class: 'hidden-destroy'
-            - if @item.persisted?
-              .js-file_group{"data-index" => "#{@item.item_images.count}"}
-                = file_field_tag :image, name: "item[images_attributes][#{@item.item_images.count}][image]", class: 'form__mask__image'
-                %p.js-remove 削除
-
+            .prev-content
+            .label-content
+              %label{for: "item_item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+                %pre.label-box__text-visible クリックしてファイルをアップロード
+            .hidden-content
+              = form.fields_for :item_images do |i|
+                = i.file_field :image, class: "hidden-field"
+                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_item_images_attributes_1_image" }
+                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][image]", id: "item_item_images_attributes_2_image" }
+                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_item_images_attributes_3_image" }
+                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_item_images_attributes_4_image" }
         .exhibitionPage__main__contents__product
           .exhibitionPage__main__contents__product__name-box
             .exhibitionPage__main__contents__product__name-box__name
@@ -109,7 +97,6 @@
 
           .exhibition__price__selection
             =form.submit '投稿する', class: 'exhibition__price__selection.finish'
-            %button.saving 下書きに保存
             =link_to "もどる",root_path
           .exhibition__price__rules
             禁止されている
