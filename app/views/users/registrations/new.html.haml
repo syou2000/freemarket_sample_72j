@@ -1,0 +1,41 @@
+.signUpPage
+  .signUpPage__header
+    .signUpPage__header__logo
+      = link_to root_path do
+        = image_tag "logo.png", class: "login_logo"
+    .signUpPage__header__progress
+      %ul
+        %li.active
+          会員情報
+        %li
+          商品送付先住所情報
+        %li
+          完了
+      .signUpPage__header__progress__bars
+        .signUpPage__header__progress__bars__1
+          .signUpPage__header__progress__bars__1__circle1
+          .signUpPage__header__progress__bars__1__circle2
+        .signUpPage__header__progress__bars__2
+          .signUpPage__header__progress__bars__2__circle3
+  .signUpPage__main
+    - if flash.now[:alert]
+      .flash
+        = flash.now[:alert]
+    .signUpPage__main__title
+      %h2 会員情報入力
+    .signUpPage__main__contents
+      =render 'form'
+  .signUpPage__footer
+    .signUpPage__footer__inner
+      %nav.signUpPage__footer__inner__nav
+        %ul.signUpPage__footer__inner__nav__category
+          %li
+            = link_to "プライバシーポリシー", "#", class: "privacyPolicy"
+          %li
+            = link_to "フリマ利用規約", "#", class: "terms"
+          %li
+            = link_to "特定商取引に関する表記", "#", class: "notation"
+        .signUpPage__footer__inner__nav__logo
+          = link_to root_path do
+            = image_tag "logo-white.png"
+      %p &copy Furima, Inc.

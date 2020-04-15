@@ -1,0 +1,39 @@
+.loginPage
+  .header
+    = link_to image_tag("logo.png", alt: "login_logo", class: "login_logo"), "#"
+  .loginPage__main
+    .loginPage__main__contents
+      .loginPage__main__contents__no-account
+        %p アカウントをお持ちでない方はこちら
+        = link_to "新規会員登録", users_home_path
+      .loginPage__main__contents__external-authenticate
+        = link_to "#", class: "facebookBtn" do
+          = icon('fab', 'facebook-square', class: 'facebookBtn-icon fa-2x')
+          Facebookでログイン
+        = link_to "#", class: "googleBtn" do
+          = icon('fab', 'google', class: 'googleBtn-icon fa-2x')
+          Googleでログイン
+      .loginPage__main__contents__form
+        = form_with scope:resource, as: resource_name, url: session_path(resource_name), local: true do |f|
+          = f.text_field :email, placeholder: "メールアドレス", autofocus: true, class: "loginPage__main__contents__form--email_feild"
+          = f.password_field :password, placeholder: "パスワード", autofocus: true, class: "loginPage__main__contents__form--password_feild"
+          =f.submit "ログイン", class: "loginPage__main__contents__form--login"
+        = link_to "パスワードをお忘れの方", new_user_password_path, class: "passwordForget"
+
+
+  .footer1
+    .footer1__inner
+      %nav.footer1__inner__nav
+        %ul.footer1__inner__nav__category
+          %li
+            = link_to "プライバシーポリシー", "#", class: "privacyPolicy"
+          %li
+            = link_to "フリマ利用規約", "#", class: "terms"
+          %li
+            = link_to "特定商取引に関する表記", "#", class: "notation"
+
+      = link_to image_tag("logo-white.png", alt: "login_logo", class: "login_logo"), root_path
+
+      %p
+        %small
+          &copy Furima, Inc.
