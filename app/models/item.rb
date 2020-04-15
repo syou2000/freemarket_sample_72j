@@ -7,13 +7,14 @@ class Item < ApplicationRecord
   # belongs_to :brand
   # belongs_to :categry
   # has_one :late
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 
   validates :name,            presence: true
   validates :price,           presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-  # validates :price,           presence: true, format: { with: [300-9999999] }
   validates :explain,         presence: true
   validates :postage,         presence: true
-  validates :prefecture,      presence: true
+  validates :prefecture_id,   presence: true
   validates :shipping_date,   presence: true
   validates :category,        presence: true
   validates :item_status,     presence: true
