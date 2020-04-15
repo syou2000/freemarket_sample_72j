@@ -44,9 +44,24 @@ ActiveRecord::Schema.define(version: 2020_04_13_101121) do
     t.index ["user_id"], name: "index_buyers_on_user_id"
   end
 
+  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_images_on_item_id"
+  end
+
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "price", null: false
+    t.integer "price", null: false
+    t.text "explain", null: false
+    t.string "postage", null: false
+    t.integer "prefecture_id"
+    t.string "shipping_date", null: false
+    t.integer "brand"
+    t.integer "category"
+    t.string "item_status", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,14 +72,6 @@ ActiveRecord::Schema.define(version: 2020_04_13_101121) do
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
     t.index ["user_id"], name: "index_items_on_user_id"
-  end
-
-  create_table "items_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
-    t.bigint "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_items_images_on_item_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -103,9 +110,9 @@ ActiveRecord::Schema.define(version: 2020_04_13_101121) do
   add_foreign_key "addresses", "users"
   add_foreign_key "buyers", "items"
   add_foreign_key "buyers", "users"
+  add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "buyers"
-  add_foreign_key "items_images", "items"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "buyers"
 end
