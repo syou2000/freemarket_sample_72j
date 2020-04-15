@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   end
   root 'top_page#index'
   resources :users, only: [:new]
+
   resources :items, only: [:create, :destroy, :edit, :show]
     resources :items do    
       get :purchase, on: :member  
     end
   resources :exhibition, only: [:index]
   get 'exhibition/index'
+
 end
 

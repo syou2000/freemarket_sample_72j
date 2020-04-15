@@ -10,9 +10,8 @@
 |explain|text|null: false|
 |postage|integer|nullfalse|
 |region|string|null:false|
-|state|string|null:false|
+|prefecture_id|integer|null:false|
 |shipping_date|integer|null: false|
-|size|integer||
 |brand_id|integer|null:false, foreign_key: true|
 |category_id|integer|null:false, foreign_key: true|
 |user_id|integer|null:false, foreign_key: true|
@@ -146,7 +145,7 @@
 |city|string|null: false|
 |house_number|string|null: false|
 |building|string|null: false|
-|prefecture_id|string|null: false|
+|prefecture_id|integer|null: false|
 |phone_number|integer|null: false|
 |last_name|string|null: false|
 |first_name|string|null: false|
@@ -164,6 +163,7 @@
 |number|integer|null: false|
 |expiration|date|null: false|
 |security_code|integer|null: false|
+
 
 ### Association
 - belongs_to user
