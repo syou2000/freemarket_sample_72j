@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  #　後に設定するためコメントアウトにしています
+  # 後に設定するためコメントアウトにしています
   # has_many :comments
   # has_many :messages
   has_many :item_images, dependent: :destroy
@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   # belongs_to :categry
   # has_one :late
-#   belongs_to :user
+  belongs_to :user
 #   belongs_to :brand
 #   has_one :buyer
 #   def item_image

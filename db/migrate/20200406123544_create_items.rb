@@ -12,7 +12,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string      :item_status,      null: false
       # t.integer :brand_id,      null: false
       # t.integer :category_id,   null: false
-      # t.references :user,       null: false
+      t.references :user,       null: false
 
       t.timestamps
     end

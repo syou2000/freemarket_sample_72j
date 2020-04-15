@@ -5,10 +5,11 @@ FactoryBot.define do
     price             {"1000"}
     explain           {"あいうえお"}
     postage           {"着払い (購入者負担)"}
-    prefecture        {"北海道"}
+    prefecture        { Prefecture.all.sample }
     shipping_date     {"1~2日で発送"}
     category          {"1"}
     item_status       {"新品、未使用"}
+    user
   end
 
 end
