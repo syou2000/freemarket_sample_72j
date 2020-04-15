@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
   root 'top_page#index'
-  resources :users, only: [:new]
+  resources :users, only: [:show]
   resources :items, only: [:new, :create,:destroy]
   get "items/sample_show", to: "items#sample_show"
   get "items/sample_show2", to: "items#sample_show2"
