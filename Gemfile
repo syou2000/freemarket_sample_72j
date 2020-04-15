@@ -82,4 +82,8 @@ gem 'pry-rails'
 
 gem 'active_hash'
 
-gem 'jquery-rails'
+gem 'carrierwave'
+
+gem 'mini_magick'
+
+gem 'jquery-rails' 

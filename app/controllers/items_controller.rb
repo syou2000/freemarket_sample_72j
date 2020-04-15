@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def destroy
@@ -30,4 +31,7 @@ class ItemsController < ApplicationController
     # .merge(user_id: current_user.id) これをparamsの末尾につける
   end
 
+  def user_params
+    params.require(:user).premit(:buyer_id)
+  end
 end
