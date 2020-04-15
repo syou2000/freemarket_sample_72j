@@ -1,10 +1,3 @@
-// $(function(){
-//   $('.test').mouseover(function(){
-//     var selectedSrc = $(this).attr('src');
-//     $('.p').html(`<img src="${selectedSrc}" width="300px" height="300px">`)
-//   });
-// });
-
   $(function() {
     $('.sub_image').mouseover(function(){
     // "_thumb"を削った画像ファイル名を取得
@@ -18,7 +11,7 @@
     }
     );
     // サムネイルの枠を変更
-    $(this).css({"border":"2px solid #ff5a71"});
+    $(this).css({"border":"2px solid #3CCACE"});
     });
     
     // マウスアウトでサムネイル枠もとに戻す

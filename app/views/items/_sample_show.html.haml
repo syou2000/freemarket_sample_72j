@@ -7,11 +7,11 @@
             = @item.name
 
             -# 投稿者のみ表示
-            -if user_signed_in? && current_user.id == 0
+            -if user_signed_in? && current_user.id == @user.exhibitor_id
               .settingBtn
                 = icon('fas', 'ellipsis-v')
                 .settingBtn__list
-                  = link_to '編集', items_edit_path, method: :get
+                  = link_to '編集', "#", method: :get
                   = link_to '削除', "#", method: :delete 
 
           .main1__show__contents--top__itemBox__body
@@ -60,14 +60,14 @@
                 %tr
                   %th 商品の状態
                   %td 
-                    = @item.state
+                  
                 %tr
                   %th 配送料の負担
                   %td 送料込み（出品者負担）
                 %tr
                   %th 発送元の地域
                   %td 
-                    =link_to @item.region, "#"
+                    北海道
                 %tr
                   %th 発送日の目安
                   %td 4-7日で発送
@@ -82,20 +82,23 @@
                 = link_to "#", class: "optionalBtn" do
                   = icon('fa', 'flag')
                   不適切な商品の通報
-                  
-        
-          -unless user_signed_in? 
+
+          -if user_signed_in? && current_user.id == @user.exhibitor_id
             .main1__show__contents--top__purchaseBox
-              = link_to new_user_session_path , class: "buyBtn" do
+              = link_to "#" , class: "buyBtn" do
                 .main1__show__contents--top__purchaseBox__btn
                   %h1.comment 購入画面に進む
 
-          -else 
+          -elsif user_signed_in? 
             .main1__show__contents--top__purchaseBox
               = link_to purchase_item_path(@item.id) , class: "buyBtn" do
                 .main1__show__contents--top__purchaseBox__btn
                   %h1.comment 購入画面に進む
-          
+          -else 
+            .main1__show__contents--top__purchaseBox
+              = link_to new_user_session_path , class: "buyBtn" do
+                .main1__show__contents--top__purchaseBox__btn
+                  %h1.comment 購入画面に進む
 
         .main1__show__contents--top__commentBox
           %form#new_comment.new_comment
