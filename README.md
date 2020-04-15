@@ -10,12 +10,13 @@
 |explain|text|null: false|
 |postage|integer|nullfalse|
 |region|string|null:false|
-|prefecture|string|null:false|
+|prefecture_id|integer|null:false|
 |shipping_date|integer|null: false|
 |brand_id|integer|null:false, foreign_key: true|
 |category_id|integer|null:false, foreign_key: true|
 |user_id|integer|null:false, foreign_key: true|
 |item_status|string|null: false|
+|buyer_id|integer|null: false|
 
 ### Association
 - has_many comments
@@ -37,7 +38,7 @@
 - belongs_to item
 
 
-## usersテーブル
+## profielesテーブル
 |column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false, index:true|
@@ -54,7 +55,7 @@
 - has_one profiels
 
 
-## profielesテーブル
+## usersテーブル
 |column|Type|Options|
 |------|----|-------|
 |first_name|string|null: false|
@@ -142,9 +143,27 @@
 |user_id|integer|null: false, foreign_key: true|
 |zip_code|integer|null: false, index: false|
 |city|string|null: false|
-|town|string|null: false|
-|bulding|string|null: false|
-|prefecture|integer|null: false|
+|house_number|string|null: false|
+|building|string|null: false|
+|prefecture_id|integer|null: false|
+|phone_number|integer|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_hurigana|string|null: false|
+|first_name_hurigana|string|null: false|
+
+### Association
+- belongs_to user
+
+
+## cardsテーブル
+|column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|number|integer|null: false|
+|expiration|date|null: false|
+|security_code|integer|null: false|
+
 
 ### Association
 - belongs_to user

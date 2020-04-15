@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :price, :explain, :postage, :brand, :category, :prefecture_id, :shipping_date, :item_status, item_images_attributes: [:image, :_destroy, :id])
-    # .merge(user_id: current_user.id) これをparamsの末尾につける
+    # .merge(user_id: current_user.id) これを後にparamsの末尾につける
   end
 
 end

@@ -1,0 +1,94 @@
+.addressPage
+  .addressPage__header
+    .addressPage__header__logo
+      = link_to root_path do
+        = image_tag "logo.png", class: "login_logo"
+    .addressPage__header__progress
+      %ul
+        %li
+          会員情報
+        %li.active
+          商品送付先住所情報
+        %li
+          完了
+      .addressPage__header__progress__bars
+        .addressPage__header__progress__bars__1
+          .addressPage__header__progress__bars__1__circle1
+          .addressPage__header__progress__bars__1__circle2
+        .addressPage__header__progress__bars__2
+          .addressPage__header__progress__bars__2__circle3
+  .addressPage__main
+    - if flash.now[:alert]
+      .flash
+        = flash.now[:alert]
+    .addressPage__main__contents
+      %h2 商品送付先住所情報
+      = form_with scope: 'address', model: @address, url: addresses_path, local: true do |form|
+        .addressPage__main__contents__form
+          .addressPage__main__contents__form__kanji
+            .addressPage__main__contents__form__kanji__title
+              送付先氏名(全角)
+              %span.addressPage__main__contents__form__kanji__require
+                必須
+            =form.text_field :last_name, placeholder: "例)山田", class: "kanjiFormLeft"
+            =form.text_field :first_name, placeholder: "例)太郎", class: "kanjiFormRight"
+          .addressPage__main__contents__form__hurigana
+            .addressPage__main__contents__form__hurigana__title
+              ふりがな(全角)
+              %span.addressPage__main__contents__form__hurigana__require
+                必須
+            =form.text_field :last_name_hurigana, placeholder: "例)やまだ", class: "huriganaFormLeft"
+            =form.text_field :first_name_hurigana, placeholder: "例)たろう", class: "huriganaFormRight"
+          .addressPage__main__contents__form__zip
+            .addressPage__main__contents__form__zip__title
+              郵便番号
+              %span.addressPage__main__contents__form__zip__require
+                必須
+            =form.text_field :zip_code, placeholder: "例)0123456", class: "zipForm"
+          .addressPage__main__contents__form__prefecture
+            .addressPage__main__contents__form__prefecture__title
+              都道府県
+              %span.addressPage__main__contents__form__prefecture__require
+                必須
+            =form.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: ""
+            -# =form.select :prefecture, ["", "北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
+          .addressPage__main__contents__form__city
+            .addressPage__main__contents__form__city__title
+              市区町村
+              %span.addressPage__main__contents__form__city__require
+                必須
+            =form.text_field :city, placeholder: "例)中央区", class: "cityForm"
+          .addressPage__main__contents__form__houseNumber
+            .addressPage__main__contents__form__houseNumber__title
+              番地
+              %span.addressPage__main__contents__form__houseNumber__require
+                必須
+            =form.text_field :house_number, placeholder: "例)1-2-3", class: "houseNumberForm"
+          .addressPage__main__contents__form__building
+            .addressPage__main__contents__form__building__title
+              マンション名やビル名と部屋番号
+              %span.addressPage__main__contents__form__building__require
+                任意
+            =form.text_field :building, placeholder: "例)フリマビル101", class: "buildingForm"
+          .addressPage__main__contents__form__number
+            .addressPage__main__contents__form__number__title
+              電話番号
+              %span.addressPage__main__contents__form__number__require
+                任意
+            =form.text_field :phone_number, placeholder: "例)09012345678", class: "numberForm"
+          =form.submit "次へ進む", class: "toNextBtn"
+
+  .addressPage__footer
+    .addressPage__footer__inner
+    %nav.addressPage__footer__inner__nav
+      %ul.addressPage__footer__inner__nav__category
+        %li
+          = link_to "プライバシーポリシー", "#", class: "privacyPolicy"
+        %li
+          = link_to "フリマ利用規約", "#", class: "terms"
+        %li
+          = link_to "特定商取引に関する表記", "#", class: "notation"
+      .addressPage__footer__inner__nav__logo
+        = link_to root_path do
+          = image_tag "logo-white.png"
+        %p &copy Furima, Inc.
