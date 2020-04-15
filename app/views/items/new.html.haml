@@ -2,8 +2,10 @@
   .header
     = link_to image_tag("logo.png", alt: "exhibition_logo", class: "exhibition_logo"), "#"
   .exhibitionPage__main
+    - if flash.now[:alert]
+      .flash
+        = flash.now[:alert]
     .exhibitionPage__main__contents
-      =flash[:alert]
       = form_with(model: @item, local: true) do |form|
         .exhibitionPage__main__contents__image
           .exhibitionPage__main__contents__image__title
