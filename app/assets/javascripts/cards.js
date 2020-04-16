@@ -1,6 +1,6 @@
 document.addEventListener(
   "DOMContentLoaded", (e) => {
-    Payjp.setPublicKey("公開鍵");
+    Payjp.setPublicKey("pk_test_bcb001661ce124d13c7a7912");
     const btn = document.getElementById('token_submit'); //IDがtoken_submitの場合に取得されます
     btn.addEventListener("click", (e) => { //ボタンが押されたときに作動します
       e.preventDefault(); //ボタンを一旦無効化します
@@ -30,4 +30,6 @@ document.addEventListener(
         }
       });
     });
-  },false);
+  },
+  false
+);
