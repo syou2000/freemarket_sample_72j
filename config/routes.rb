@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :items, only: [:new, :create,:destroy]
   get "items/sample_show", to: "items#sample_show"
   get "items/sample_show2", to: "items#sample_show2"
-  resources :cards, only: [:new, :show]
+  resources :cards, only: [:new, :create, :destroy, :show]
    
 end

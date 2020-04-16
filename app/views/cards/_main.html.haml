@@ -3,32 +3,32 @@
     %h2 クレジットカード情報入力
   .cardMain__contents
     .cardMain__contents__form
-      .cardMain__contents__form__number
-        .cardMain__contents__form__number__title
-          カード番号
-          %span 必須
-        %input.numberForm
-        .cardMain__contents__form__number__brands
-          = image_tag asset_path("credit_card_brands.png"), size: "280x25"
+      = form_with url: cards_path, method: :post, html: { name: "inputForm" } do |form|
+        .cardMain__contents__form__number
+          .cardMain__contents__form__number__title
+            カード番号
+            %span 必須
+          = form.text_field :card_number, type: 'text', class: 'numberForm', placeholder: '半角数字のみ', maxlength: "16"
+          .cardMain__contents__form__number__brands
+            = image_tag asset_path("credit_card_brands.png"), size: "280x25"
 
-      .cardMain__contents__form__limit
-        .cardMain__contents__form__limit__title
-          有効期限
-          %span 必須
-        %select.limitForm
-        %span.cordMonth 月
-        %select.limitForm
-        %span.cordYear 年
-      .cardMain__contents__form__code
-        .cardMain__contents__form__code__title
-          セキュリティコード
-          %span 必須
-        %input.codeForm
-      .cardMain__contents__form__whatIsCode
-        %i.fas.fa-question-circle
-        %span カード裏面の番号とは？
-      .cardMain__contents__form__submit
-        追加する
-        
+        .cardMain__contents__form__limit
+          .cardMain__contents__form__limit__title
+            有効期限
+            %span 必須
+          = form.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'limitForm'
+          %span.cordMonth 月
+          = form.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030]],{} ,class: 'limitForm'
+          %span.cordYear 年
+        .cardMain__contents__form__code
+          .cardMain__contents__form__code__title
+            セキュリティコード
+            %span 必須
+          = form.text_field :cvc, type: 'text', class: 'codeForm', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
+        .cardMain__contents__form__whatIsCode
+          %i.fas.fa-question-circle
+          %span カード裏面の番号とは？
+        = form.submit '追加する', class: 'cardSubmit', id: 'token_submit'
+
 
 
