@@ -8,10 +8,17 @@
   = render "main_brand"
   = render "banner"
   = render "footer"
-
-= link_to new_item_path do
-  .camera-btm
-    .camera-btm__text
-      出品する
-    .camera-btm__icon
-      = image_tag asset_path("icon/icon_camera.png"), size: "54x54"
+-if user_signed_in?
+  = link_to new_item_path do
+    .camera-btm
+      .camera-btm__text
+        出品する
+      .camera-btm__icon
+        = image_tag asset_path("icon/icon_camera.png"), size: "54x54"
+-else
+  = link_to new_user_session_path do
+    .camera-btm
+      .camera-btm__text
+        出品する
+      .camera-btm__icon
+        = image_tag asset_path("icon/icon_camera.png"), size: "54x54"
