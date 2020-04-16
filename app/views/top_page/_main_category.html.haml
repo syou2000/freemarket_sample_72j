@@ -18,16 +18,16 @@
             - else
               =link_to root_path do
                 =image_tag item.item_images.first.image.to_s, class:"image"
-                .category__box__lists__list__text
-                  .category__box__lists__list__text__name
-                    = item.name
-                  .category__box__lists__list__text__data
-                    .category__box__lists__list__text__data__price
-                      = item.price.to_s + "円"
-                      %p (税込)
-                    .category__box__lists__list__text__data__quality
-                      .category__box__lists__list__text__data__quality__icon
-                        = icon('fa', 'star')
-                      .category__box__lists__list__text__data__quality__value
-                        -# = item.user.profile.late_count
+            .category__box__lists__list__text
+              .category__box__lists__list__text__name
+                = item.name
+              .category__box__lists__list__text__data
+                .category__box__lists__list__text__data__price
+                  = item.price.to_s + "円"
+                  %p (税込)
+                .category__box__lists__list__text__data__quality
+                  .category__box__lists__list__text__data__quality__icon
+                    = icon('fa', 'star')
+                  .category__box__lists__list__text__data__quality__value
+                    -# = item.user.profile.late_count
 
