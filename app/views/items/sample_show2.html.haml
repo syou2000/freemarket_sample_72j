@@ -26,6 +26,8 @@
             %p ポイントを使用 (所持ポイント: P0)
         .purchasePage__main__contents__box__payment
           %h3 支払い方法
+          -# %script.payjp-button{"data-key" => "pk_test_bcb001661ce124d13c7a7912", "data-on-created" => "onCreated", "data-partial" => "true", "data-submit-text" => "トークンを作成する", :src => "https://checkout.pay.jp/", :type => "text/javascript"}
+          -# :cdata
           .purchasePage__main__contents__box__payment__way
             =icon("far fa-plus-square", class: "icon")
             %span 登録してください

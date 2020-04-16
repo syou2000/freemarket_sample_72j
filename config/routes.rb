@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get "items/sample_show", to: "items#sample_show"
   get "items/sample_show2", to: "items#sample_show2"
   resources :cards, only: [:new, :show]
+   
 end
-

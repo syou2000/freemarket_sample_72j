@@ -90,5 +90,4 @@ gem 'pry-rails'
 
 gem 'payjp'
 
-
-
+gem 'dotenv-rails'
