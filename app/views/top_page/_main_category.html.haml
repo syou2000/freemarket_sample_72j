@@ -16,6 +16,7 @@
                   .category__box__lists__list__sold__inner__back
             - else
               =link_to item_path(item) do
+                -# =image_tag image.image.to_s, class:"image"
                 .category__box__lists__list__text
                   .category__box__lists__list__text__name
                     = item.name
@@ -27,4 +28,4 @@
                       .category__box__lists__list__text__data__quality__icon
                         = icon('fa', 'star')
                       .category__box__lists__list__text__data__quality__value
-
+                        -# =item.user.profile.late_count
