@@ -1,0 +1,34 @@
+.cardMain
+  .cardMain__header
+    %h2 クレジットカード情報入力
+  .cardMain__contents
+    .cardMain__contents__form
+      .cardMain__contents__form__number
+        .cardMain__contents__form__number__title
+          カード番号
+          %span 必須
+        %input.numberForm
+        .cardMain__contents__form__number__brands
+          = image_tag asset_path("credit_card_brands.png"), size: "280x25"
+
+      .cardMain__contents__form__limit
+        .cardMain__contents__form__limit__title
+          有効期限
+          %span 必須
+        %select.limitForm
+        %span.cordMonth 月
+        %select.limitForm
+        %span.cordYear 年
+      .cardMain__contents__form__code
+        .cardMain__contents__form__code__title
+          セキュリティコード
+          %span 必須
+        %input.codeForm
+      .cardMain__contents__form__whatIsCode
+        %i.fas.fa-question-circle
+        %span カード裏面の番号とは？
+      .cardMain__contents__form__submit
+        追加する
+        
+
+
