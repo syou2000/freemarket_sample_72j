@@ -65,9 +65,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_101121) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "brand_id"
     t.bigint "buyer_id"
-    t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
@@ -111,7 +109,6 @@ ActiveRecord::Schema.define(version: 2020_04_13_101121) do
   add_foreign_key "buyers", "items"
   add_foreign_key "buyers", "users"
   add_foreign_key "item_images", "items"
-  add_foreign_key "items", "brands"
   add_foreign_key "items", "buyers"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "buyers"
