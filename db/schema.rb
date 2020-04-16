@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_101121) do
+ActiveRecord::Schema.define(version: 2020_04_15_081340) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
@@ -44,24 +44,33 @@ ActiveRecord::Schema.define(version: 2020_04_13_101121) do
     t.index ["user_id"], name: "index_buyers_on_user_id"
   end
 
-  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exhibitors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_item_images_on_item_id"
+    t.index ["item_id"], name: "index_exhibitors_on_item_id"
+    t.index ["user_id"], name: "index_exhibitors_on_user_id"
+
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "price", null: false
+
+    t.string "price", null: false
     t.text "explain", null: false
-    t.string "postage", null: false
-    t.integer "prefecture_id"
-    t.string "shipping_date", null: false
-    t.integer "brand"
-    t.integer "category"
-    t.string "item_status", null: false
+    t.integer "postage", null: false
+    t.string "region", null: false
+    t.string "state", null: false
+    t.integer "shipping_date", null: false
+
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -101,8 +110,10 @@ ActiveRecord::Schema.define(version: 2020_04_13_101121) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "buyer_id"
+    t.bigint "exhibitor_id"
     t.index ["buyer_id"], name: "index_users_on_buyer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["exhibitor_id"], name: "index_users_on_exhibitor_id"
     t.index ["nickname"], name: "index_users_on_nickname"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -110,9 +121,13 @@ ActiveRecord::Schema.define(version: 2020_04_13_101121) do
   add_foreign_key "addresses", "users"
   add_foreign_key "buyers", "items"
   add_foreign_key "buyers", "users"
-  add_foreign_key "item_images", "items"
+
+  add_foreign_key "exhibitors", "items"
+  add_foreign_key "exhibitors", "users"
+
   add_foreign_key "items", "brands"
   add_foreign_key "items", "buyers"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "buyers"
+  add_foreign_key "users", "exhibitors"
 end

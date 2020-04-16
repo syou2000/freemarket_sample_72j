@@ -16,20 +16,32 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = Item.find(params[:id])
+    @user = User.find(params[:id])
+  end
+
   def destroy
+    
   end
 
-  def sample_show
+  def edit 
+
   end
 
-  def sample_show2
-  end
+  
 
+  def purchase
+    @item = Item.find(params[:id])
+  end
   private
-
   def item_params
-    params.require(:item).permit(:name, :price, :explain, :postage, :brand, :category, :prefecture_id, :shipping_date, :item_status, item_images_attributes: [:image, :_destroy, :id])
-    # .merge(user_id: current_user.id) これを後にparamsの末尾につける
+    params.require(:item).permit(:name, :price, :explain, :postage, :brand, :category, :prefecture, :shipping_date, :item_status, item_images_attributes: [:image, :_destroy, :id])
+    # .merge(user_id: current_user.id) これをparamsの末尾につける
+
   end
 
+  def user_params
+    params.require(:user).premit(:buyer_id, :exhibitor_id)
+  end
 end
