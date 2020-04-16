@@ -10,10 +10,12 @@ class Item < ApplicationRecord
   # belongs_to :categry
   # has_one :late
   belongs_to :user
+
   has_one :buyer
   # def item_image
   #   return ItemsImage.find_by(item_id: self.id)
   # end
+
     # itemモデルとuserモデルのアソシエーションはうまくいっている、参考までに残しているが、最後には削除する
   # def user
   #   return User.find_by(id: self.user_id)
@@ -23,8 +25,9 @@ class Item < ApplicationRecord
   validates :price,           presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates :explain,         presence: true
   validates :postage,         presence: true
-  validates :prefecture_id,   presence: true
+  validates :prefecture,      presence: true
   validates :shipping_date,   presence: true
   validates :category,        presence: true
   validates :item_status,     presence: true
+
 end
