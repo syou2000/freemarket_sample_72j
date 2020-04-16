@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_081340) do
     t.index ["user_id"], name: "index_buyers_on_user_id"
   end
 
+
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text"
     t.datetime "created_at", null: false
@@ -57,16 +58,19 @@ ActiveRecord::Schema.define(version: 2020_04_15_081340) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_exhibitors_on_item_id"
     t.index ["user_id"], name: "index_exhibitors_on_user_id"
+
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+
     t.string "price", null: false
     t.text "explain", null: false
     t.integer "postage", null: false
     t.string "region", null: false
     t.string "state", null: false
     t.integer "shipping_date", null: false
+
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -77,14 +81,6 @@ ActiveRecord::Schema.define(version: 2020_04_15_081340) do
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
     t.index ["user_id"], name: "index_items_on_user_id"
-  end
-
-  create_table "items_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
-    t.bigint "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_items_images_on_item_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -125,11 +121,12 @@ ActiveRecord::Schema.define(version: 2020_04_15_081340) do
   add_foreign_key "addresses", "users"
   add_foreign_key "buyers", "items"
   add_foreign_key "buyers", "users"
+
   add_foreign_key "exhibitors", "items"
   add_foreign_key "exhibitors", "users"
+
   add_foreign_key "items", "brands"
   add_foreign_key "items", "buyers"
-  add_foreign_key "items_images", "items"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "buyers"
   add_foreign_key "users", "exhibitors"
