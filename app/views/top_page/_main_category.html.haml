@@ -16,7 +16,7 @@
                   .category__box__lists__list__sold__inner__back
             - else
               =link_to item_path(item) do
-                -# image_tag( item.item_image.image.to_s, class:"image")
+                -# =image_tag image.image.to_s, class:"image"
                 .category__box__lists__list__text
                   .category__box__lists__list__text__name
                     = item.name

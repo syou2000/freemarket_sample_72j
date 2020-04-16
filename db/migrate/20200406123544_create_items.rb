@@ -14,6 +14,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.references :user,       null: false
       # t.integer :item_status,   null: false
       t.timestamps
+      # master_branchへのmerge後、コメントアウトを外します
     end
   end
 end
