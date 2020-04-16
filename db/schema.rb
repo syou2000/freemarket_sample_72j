@@ -29,12 +29,6 @@ ActiveRecord::Schema.define(version: 2020_04_13_101121) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "buyers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "item_id"
@@ -59,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_101121) do
     t.string "postage", null: false
     t.integer "prefecture_id"
     t.string "shipping_date", null: false
-    t.integer "brand"
+    t.string "brand"
     t.integer "category"
     t.string "item_status", null: false
     t.bigint "user_id", null: false
