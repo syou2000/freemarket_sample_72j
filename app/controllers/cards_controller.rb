@@ -75,6 +75,17 @@ class CardsController < ApplicationController
     end
   end
 
+  # def purchase
+  #   item = Item.find(params[:id])
+  #   price = item.where[:price]
+  #   Payjp.api_key = = ENV["PAYJP_PRIVATE_KEY"]
+  #   Payjp::Charge.create(
+  #     amount: price, # 決済する値段
+  #     card: params['payjp-token'], # フォームを送信すると作成・送信されてくるトークン
+  #     currency: 'jpy'
+  #   )
+  # end
+
   private
 
   def set_card

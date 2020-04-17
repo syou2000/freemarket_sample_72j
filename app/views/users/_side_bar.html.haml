@@ -16,7 +16,7 @@
     - @side2.each do|c|
       .side2__content-title
         = c
-    = link_to new_card_path do
+    = link_to cards_path do
       %p.side2__content-title 支払い方法
     = link_to "#" do
-      %p.side2__content-title ログアウト
+      = link_to('ログアウト', destroy_user_session_path, class: "side2__content-title", method: :delete)
