@@ -7,7 +7,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string      :postage,         null: false
       t.integer     :prefecture_id
       t.string      :shipping_date,   null: false
-      t.integer     :brand
+      t.string      :brand
       t.integer     :category
       t.string      :item_status,      null: false
       # t.integer :brand_id,      null: false
@@ -15,6 +15,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.references :user,       null: false
 
       t.timestamps
+      # master_branchへのmerge後、コメントアウトを外します
     end
   end
 end

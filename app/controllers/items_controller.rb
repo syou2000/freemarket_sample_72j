@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only:[:show, :destroy, :purchase]
 
   def new
     @item = Item.new
@@ -12,23 +13,33 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = '入力に誤りがあります'
       render :new
-      
     end
   end
 
+  def show
+  end
+
   def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
-  def sample_show
+  def edit 
   end
 
-  def sample_show2
+  def purchase
   end
 
   private
-
   def item_params
     params.require(:item).permit(:name, :price, :explain, :postage, :brand, :category, :prefecture_id, :shipping_date, :item_status, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
+  def user_params
+    params.require(:user).premit(:buyer_id, :exhibitor_id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end

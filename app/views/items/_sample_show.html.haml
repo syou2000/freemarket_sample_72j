@@ -4,21 +4,34 @@
       .main1__show__contents--top
         .main1__show__contents--top__itemBox
           %h2.main1__show__contents--top__itemBox__name
-            product3
+            = @item.name
+
+            -# 投稿者のみ表示
+            -if user_signed_in? && current_user.id == @item.user_id
+              .settingBtn
+                = icon('fas', 'ellipsis-v')
+                .settingBtn__list
+                  = link_to '編集', "#", method: :get
+                  = link_to '削除', item_path(@item.id), data: { confirm: "本当に削除しますか？" }, method: :delete
+
           .main1__show__contents--top__itemBox__body
             %ul
               %li
-                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "560x346"
+                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class:"main_image", size: "560x346"
                 %ul
                   %li
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "140x87"
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class:"sub_image",size: "140x87"
                   %li
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", size: "140x87"
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", class:"sub_image",size: "140x87"
                   %li
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", size: "140x87"
-
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", class:"sub_image",size: "140x87"
+              
+                  
           .main1__show__contents--top__itemBox__price
-            %span ¥30000
+            %span
+              ¥
+              = @item.price
+
             .main1__show__contents--top__itemBox__price--detail
               %span (税込)
               %span 送料込み
@@ -35,7 +48,7 @@
                 %tr
                   %th カテゴリー
                   %td
-                    = link_to "ベビーキッズ", "#"
+                    = link_to "ベビー・キッズ","#"
                     %br
                     = link_to "ベビー服(男女兼用)  ~95cm", "#"
                     %br
@@ -44,18 +57,17 @@
                   %th ブランド
                   %td 
                 %tr
-                  %th 商品のサイズ
-                  %td 
                 %tr
                   %th 商品の状態
-                  %td 未使用に近い
+                  %td 
+                  
                 %tr
                   %th 配送料の負担
                   %td 送料込み（出品者負担）
                 %tr
                   %th 発送元の地域
                   %td 
-                    = link_to "岩手県", "#"
+                    北海道
                 %tr
                   %th 発送日の目安
                   %td 4-7日で発送
@@ -71,6 +83,23 @@
                   = icon('fa', 'flag')
                   不適切な商品の通報
 
+          -if user_signed_in? && current_user.id == @item.user_id
+            .main1__show__contents--top__purchaseBox
+              = link_to "#" , class: "buyBtn" do
+                .main1__show__contents--top__purchaseBox__btn
+                  %h1.comment 購入画面に進む
+
+          -elsif user_signed_in? 
+            .main1__show__contents--top__purchaseBox
+              = link_to purchase_item_path(@item.id) , class: "buyBtn" do
+                .main1__show__contents--top__purchaseBox__btn
+                  %h1.comment 購入画面に進む
+          -else 
+            .main1__show__contents--top__purchaseBox
+              = link_to new_user_session_path , class: "buyBtn" do
+                .main1__show__contents--top__purchaseBox__btn
+                  %h1.comment 購入画面に進む
+
         .main1__show__contents--top__commentBox
           %form#new_comment.new_comment
             %textarea
@@ -79,7 +108,7 @@
               %br
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
             %br
-            = link_to items_sample_show2_path do
+            = link_to "#" do
               %button.commentBtn
                 = icon('fa', 'comment')
                 コメントする

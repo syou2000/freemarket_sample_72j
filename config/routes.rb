@@ -6,11 +6,14 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
   root 'top_page#index'
+  
   resources :users, only: [:show]
-  resources :items, only: [:new, :create,:destroy]
-  get "items/sample_show", to: "items#sample_show"
-  get "items/sample_show2", to: "items#sample_show2"
+  resources :items, only: [:new, :create, :destroy, :edit, :show]
+    resources :items do    
+      get :purchase, on: :member  
+    end
+  resources :exhibition, only: [:index]
+  get 'exhibition/index'
   resources :cards, only: [:new, :index, :destroy, :show]
   post "pay", to: "cards#pay"
-   
 end
