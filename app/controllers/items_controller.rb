@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = '入力に誤りがあります'
       render :new
-      
     end
   end
 
@@ -21,12 +20,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item.destroy
+    @item.destroy
     redirect_to root_path
   end
 
   def edit 
-
   end
 
   def purchase
