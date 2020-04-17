@@ -3,15 +3,17 @@ class CardsController < ApplicationController
   require "payjp"
   before_action :set_card
 
-  def new
-    card = Card.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
+  def new # カードの登録画面。送信ボタンを押すとcreateアクションへ。
     @side = ["マイページ","お知らせ","やることリスト","いいね！一覧","出品する","下書き一覧","出品した商品-出品中","出品した商品-取引中","出品した商品-売却済み","購入した商品-取引中","購入した商品-過去の取引","ニュース一覧","評価一覧","ガイド","お問い合わせ"]
     @side1 = ["売上・振込申請","ポイント"]
     @side2 = ["プロフィール","発送元・お届け先住所変更","メール/パスワード","本人情報","電話番号の確認"]
+    card = Card.where(user_id: current_user.id).first
+    redirect_to action: "index" if card.present?
   end
 
-  def create #PayjpとCardのデータベースを作成
+ # indexアクションはここでは省略
+
+  def pay #PayjpとCardのデータベースを作成
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
 
     if params['payjp-token'].blank?
@@ -26,33 +28,47 @@ class CardsController < ApplicationController
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to "index"
+        redirect_to action: "index"
       else
         redirect_to action: "create"
       end
     end
   end
 
-  def destroy #PayjpとCardデータベースを削除します
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
-    else
+  def index #CardのデータをPayjpに送って情報を取り出す
+    if @card.present?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      customer.delete
-      card.delete
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_information = customer.cards.retrieve(@card.card_id)
+
+      # 《＋α》 登録しているカード会社のブランドアイコンを表示するためのコードです。---------
+      @card_brand = @card_information.brand      
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.svg"
+      when "MasterCard"
+        @card_src = "master-card.svg"
+      when "American Express"
+        @card_src = "american_express.svg"
+      when "Diners Club"
+        @card_src = "dinersclub.svg"
+      when "Discover"
+        @card_src = "discover.svg"
+      end
+      # ---------------------------------------------------------------
     end
-      redirect_to action: "new"
   end
 
-  def show
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
-      redirect_to action: "new" 
-    else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+  def destroy #PayjpとCardのデータベースを削除
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    customer.delete
+    if @card.destroy #削除に成功した時にポップアップを表示します。
+      redirect_to action: "index", notice: "削除しました"
+    else #削除に失敗した時にアラートを表示します。
+      redirect_to action: "index", alert: "削除できませんでした"
     end
   end
 
