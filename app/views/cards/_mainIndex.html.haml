@@ -2,16 +2,12 @@
   .cardIntro__header
     %h2 支払い方法
   .cardIntro__contents
-    .cardIntro__contents__form
+    .cardIntro__contents__list
       %h3 クレジットカード一覧
-    .cardIntro__contents__form
-      = link_to new_cards_pash do
-        
-
-
-
-
-
+    .cardIntro__contents__add
+      = link_to('クレジットカード を追加する', new_card_path)
+    .cardIntro__contents__payInfo
+      = link_to('支払いについて', "#")
 
 
 
