@@ -9,11 +9,14 @@
     .purchasePage__main__product
       .purchasePage__main__product__box
         .purchasePage__main__product__box__image
-          -# この行に投稿の写真を追加する
+          =image_tag @item.item_images.first.image.to_s
         .purchasePage__main__product__box__money
-          %p サッカースパイク
-          %span ¥10,000
-          %span.fee (税込) 着払い
+          %p
+            =@item.name
+          %span 
+            =@item.price.to_s + "円"
+          %span.fee 
+            =@item.postage
     .purchasePage__main__contents
       .purchasePage__main__contents__box
         .purchasePage__main__contents__box__price
@@ -21,25 +24,36 @@
             支払い金額
           .purchasePage__main__contents__box__price__right
             ¥10,000
-          .purchasePage__main__contents__box__price__bottom
-            .purchasePage__main__contents__box__price__bottom__box
-            %p ポイントを使用 (所持ポイント: P0)
         .purchasePage__main__contents__box__payment
           %h3 支払い方法
           -# %script.payjp-button{"data-key" => "pk_test_bcb001661ce124d13c7a7912", "data-on-created" => "onCreated", "data-partial" => "true", "data-submit-text" => "トークンを作成する", :src => "https://checkout.pay.jp/", :type => "text/javascript"}
           -# :cdata
           .purchasePage__main__contents__box__payment__way
-            =icon("far fa-plus-square", class: "icon")
-            %span 登録してください
+          - unless @card.present?
+            =link_to new_card_path do
+              クレジットカードが登録されていません
+          - else
+            -# ここにカード情報を載っける
+            .content__credit-cards__list--pay-num
+              = "**** **** **** " + @card_information.last4
+            .content__credit-cards__list--pay-num
+              - exp_month = @card_information.exp_month.to_s
+              - exp_year = @card_information.exp_year.to_s.slice(2,3)
+              = exp_month + " / " + exp_year
         .purchasePage__main__contents__box__address
           .purchasePage__main__contents__box__address__top
             %p 配送先
-            =link_to "変更する", "#", class: "changeAddress"
           .purchasePage__main__contents__box__address__bottom
-            %p  〒150-0043
-            %p  東京都渋谷区道玄坂２丁目２３−１２
-            %p  山田太郎
-        =link_to "購入する", "#", class: "submitBtn"
+            %p  
+              = "〒" + @address.zip_code.to_s
+            %p
+              = Prefecture.find(@address.prefecture_id).name + @address.city + @address.house_number + @address.building
+            %p
+              = @address.last_name + @address.first_name
+        - unless @card.present?
+          =link_to "クレジットカードを登録する", new_card_path, class: "submitBtn"
+        - else
+          =link_to "購入する", "#", class: "submitBtn"
   .purchasePage__footer
     .purchasePage__footer__inner
       %nav.purchasePage__footer__inner__nav
