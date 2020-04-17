@@ -62,7 +62,6 @@
         &__image {
           width: 80px;
           height: 80px;
-          background-color: yellow; // あとで消す
         }
 
         &__money {
@@ -116,7 +115,7 @@
             text-align: left;
             font-size: 18px;
             font-weight: bold;
-            padding-top: 40px;
+            padding-top: 55px;
           }
 
           &__right {
@@ -126,7 +125,7 @@
             text-align: right;
             font-size: 30px;
             font-weight: bold;
-            padding-top: 30px;
+            padding-top: 40px;
           }
 
           &__bottom {
@@ -171,12 +170,19 @@
 
           &__way {
             margin-top: 1px;
-            font-size: 14px;
-            color: #00a2ff;
           }
 
-          span:hover {
-            text-decoration: underline;
+          a {
+            text-align: center;
+            font-size: 14px;
+            color: #818181;
+            width: 343px;
+            margin-top: 20px;
+            display: block;
+          }
+
+          a:hover {
+            color: lightgrey;
           }
         }
 
@@ -195,17 +201,6 @@
             p {
               float: left;
               font-weight: bold;
-            }
-
-            .changeAddress {
-            float: right;
-            text-decoration: none;
-            color: #00a2ff;
-            }
-
-            .changeAddress:hover {
-              text-decoration: underline;
-              opacity: 0.7;
             }
           }
 
