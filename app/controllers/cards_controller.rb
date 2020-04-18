@@ -3,7 +3,7 @@ class CardsController < ApplicationController
   require "payjp"
   before_action :set_card
 
-  def new # カードの登録画面。送信ボタンを押すとcreateアクションへ。
+  def new 
     @side = ["マイページ","お知らせ","やることリスト","いいね！一覧","出品する","下書き一覧","出品した商品-出品中","出品した商品-取引中","出品した商品-売却済み","購入した商品-取引中","購入した商品-過去の取引","ニュース一覧","評価一覧","ガイド","お問い合わせ"]
     @side1 = ["売上・振込申請","ポイント"]
     @side2 = ["プロフィール","発送元・お届け先住所変更","メール/パスワード","本人情報","電話番号の確認"]
@@ -11,20 +11,20 @@ class CardsController < ApplicationController
     redirect_to action: "index" if card.present?
   end
 
- # indexアクションはここでは省略
 
-  def pay #PayjpとCardのデータベースを作成
+
+  def pay 
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
 
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
-      # トークンが正常に発行されていたら、顧客情報をPAY.JPに登録します。
+
       customer = Payjp::Customer.create(
-        description: 'test', # 無くてもOK。PAY.JPの顧客情報に表示する概要です。
+        description: 'test', 
         email: current_user.email,
-        card: params['payjp-token'], # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて永久保存します。
-        metadata: {user_id: current_user.id} # 無くてもOK。
+        card: params['payjp-token'],
+        metadata: {user_id: current_user.id} 
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
@@ -35,7 +35,7 @@ class CardsController < ApplicationController
     end
   end
 
-  def index #CardのデータをPayjpに送って情報を取り出す
+  def index 
     @side = ["マイページ","お知らせ","やることリスト","いいね！一覧","出品する","下書き一覧","出品した商品-出品中","出品した商品-取引中","出品した商品-売却済み","購入した商品-取引中","購入した商品-過去の取引","ニュース一覧","評価一覧","ガイド","お問い合わせ"]
     @side1 = ["売上・振込申請","ポイント"]
     @side2 = ["プロフィール","発送元・お届け先住所変更","メール/パスワード","本人情報","電話番号の確認"]
@@ -46,27 +46,17 @@ class CardsController < ApplicationController
     end
   end
 
-  def destroy #PayjpとCardのデータベースを削除
+  def destroy 
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
-    if @card.destroy #削除に成功した時にポップアップを表示します。
+    if @card.destroy 
       redirect_to action: "index", notice: "削除しました"
-    else #削除に失敗した時にアラートを表示します。
+    else 
       redirect_to action: "index", alert: "削除できませんでした"
     end
   end
 
-  # def purchase
-  #   item = Item.find(params[:id])
-  #   price = item.where[:price]
-  #   Payjp.api_key = = ENV["PAYJP_PRIVATE_KEY"]
-  #   Payjp::Charge.create(
-  #     amount: price, # 決済する値段
-  #     card: params['payjp-token'], # フォームを送信すると作成・送信されてくるトークン
-  #     currency: 'jpy'
-  #   )
-  # end
 
   private
 

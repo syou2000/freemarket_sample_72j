@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     
   resources :exhibition, only: [:index]
   get 'exhibition/index'
-  resources :cards, only: [:new, :index, :destroy, :show]
+  resources :cards, only: [:new, :index, :destroy]
   post "pay", to: "cards#pay"
 end
