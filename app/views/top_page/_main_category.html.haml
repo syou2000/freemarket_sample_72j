@@ -8,16 +8,14 @@
       - @items.first(6).each do |item|
         %li.category__box__lists__list
           .category__box__lists__list__image
-            - if item.buyer_id.present?
-              =link_to item_path(item) do
-                =image_tag item.item_images.first.image.to_s, class:"image"
+            =link_to item_path(item) do
+              =image_tag item.item_images.first.image.to_s, class:"image"
+            - if @itemBrand == item.id
               .category__box__lists__list__sold
                 .category__box__lists__list__sold__inner
                   %p SOLD
                   .category__box__lists__list__sold__inner__back
             - else
-              =link_to item_path(item) do
-                =image_tag item.item_images.first.image.to_s, class:"image"
             .category__box__lists__list__text
               .category__box__lists__list__text__name
                 = item.name
