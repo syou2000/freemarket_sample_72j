@@ -46,7 +46,7 @@
               %p  
                 = "〒" + @address.zip_code.to_s
               %p
-                = Prefecture.find(@address.prefecture_id).name + @address.city + @address.house_number + @address.building
+                = @prefecture.name + @address.city + @address.house_number + @address.building
               %p
                 = @address.last_name + @address.first_name
           - unless @card.present?

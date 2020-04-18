@@ -30,6 +30,7 @@ class ItemsController < ApplicationController
   def purchase
   @address = Address.find(params[:id])
   @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  @prefecture = Prefecture.find(@address.prefecture_id)
   if @card.present?
   Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
   customer = Payjp::Customer.retrieve(@card.customer_id)
