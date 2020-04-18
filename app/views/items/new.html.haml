@@ -45,7 +45,10 @@
               %label.sab-title カテゴリー
               %span.required 必須
             .exhibitionPage__main__contents__detail__category__choose
-              =form.select :category, [[""],["レディース", 1],["メンズ", 2],["ベビー・キッズ", 3],["インテリア・住まい・小物", 4]]
+              = form.collection_select :category_id, @categories, :id, :name, {prompt: '---'}
+              -# = form.select :category_id, options_for_select(@category_parent_array.map{|c|[c[:name], c[:id]]}), {}, {class: 'exhibitionPage__main__contents__detail__category__choose__box—-select' , id: 'parent_category'}
+              -# = form.select :category_id, @category_parent_array, {}, {class: 'exhibitionPage__main__contents__detail__category__choose__box—-select' , id: 'parent_category'}
+
           .exhibitionPage__main__contents__detail__brand
             .exhibitionPage__main__contents__detail__brand__title
               %label.sab-title ブランド
