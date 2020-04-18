@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only:[:show, :destroy, :purchase]
+  before_action :set_item, only:[:show, :destroy, :purchase, :payment]
 
   def new
     @item = Item.new
@@ -28,6 +28,23 @@ class ItemsController < ApplicationController
   end
 
   def purchase
+    @address = Address.find(params[:id])
+    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    @card_information = customer.cards.retrieve(@card.card_id)
+  end
+
+  def payment
+    @buyer = Buyer.new(user_id: current_user.id, item_id: params[:id])
+    if @buyer.save
+      redirect_to complete_path
+    else
+      render :purchase
+    end
+  end
+
+  def complete
   end
 
   private
