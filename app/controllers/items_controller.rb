@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-
+  before_action :set_item, only:[:show, :destroy, :purchase, :payment]
+  
   def new
     @item = Item.new
     @item.item_images.new
@@ -25,36 +26,61 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
     # binding.pry
   end
-
+  
   def create
     @item = Item.new(item_params)
     # binding.pry
     if @item.save
-      redirect_to root_path 
+      redirect_to root_path
     else
       flash.now[:alert] = '入力に誤りがあります'
       render :new
     end
   end
-
-  def show
-    @item = Item.find(params[:id])
-    @user = User.find(params[:id])
-  end
-
-  def destroy
-    
-  end
-
-  def edit 
-
-  end
-
   
-
-  def purchase
-    @item = Item.find(params[:id])
+  def show
   end
+  
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+  
+  def edit
+  end
+  
+  def purchase
+    @address = Address.find(params[:id])
+    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+    @prefecture = Prefecture.find(@address.prefecture_id)
+    if @card.present?
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    @card_information = customer.cards.retrieve(@card.card_id)
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp::Charge.create(
+    amount: @item.price,
+    customer: @card.customer_id,
+    currency: 'jpy'
+    )
+    end
+  end
+  
+  def payment
+    @buyer = Buyer.new(user_id: current_user.id, item_id: params[:id])
+    if @buyer.save
+    redirect_to complete_path
+    else
+    render :purchase
+    end
+  end
+  
+  def complete
+  end
+  
   private
   def item_params
     params.require(:item).permit(:name, :price, :explain, :postage, :brand, :category_id, :prefecture_id, :shipping_date, :item_status, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
@@ -67,4 +93,10 @@ class ItemsController < ApplicationController
   def user_params
     params.require(:user).premit(:buyer_id, :exhibitor_id)
   end
+  
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 end
+  

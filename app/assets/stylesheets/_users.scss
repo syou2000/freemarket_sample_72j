@@ -44,6 +44,7 @@
   }
   .side2__content-title{
     @include contentss;
+    text-decoration: none;
   }
 }
 

@@ -47,7 +47,8 @@ describe Address do
     #7
     it "prefecture_idがない場合は登録できない" do
       address = build(:address, prefecture_id: nil)
-      expect(address).to be_valid
+      address.valid?
+      expect(address.errors[:prefecture_id]).to include("can't be blank")
     end
 
     #8

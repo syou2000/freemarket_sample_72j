@@ -88,6 +88,10 @@ gem 'active_hash'
 
 gem 'pry-rails'
 
-gem 'fog-aws'
-
 gem 'ancestry'
+
+gem 'payjp'
+
+gem 'dotenv-rails'
+
+gem 'fog-aws'
