@@ -24,6 +24,9 @@
       margin: 26px auto;
       display: flex;
       flex-wrap: wrap;
+      a {
+        text-decoration: none;
+      }
       &__list {
         position: relative;
         background-color: white;
