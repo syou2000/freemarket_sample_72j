@@ -10,7 +10,7 @@ $(function(){
     childSelectHtml = `<div class='exhibitionPage__main__contents__detail__category__choose__added' id= 'children_wrapper'>
                         <div class='exhibitionPage__main__contents__detail__category__choose1'>
                           <i class='fas fa-chevron-down exhibitionPage__main__contents__detail__category__choose--arrow-down'></i>
-                          <select class="exhibitionPage__main__contents__detail__category__choose--select" id="child_category" name="category_id">
+                          <select class="exhibitionPage__main__contents__detail__category__choose--select" id="child_category" name="item[category_id]">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
@@ -25,7 +25,7 @@ $(function(){
     grandchildSelectHtml = `<div class='exhibitionPage__main__contents__detail__category__choose__added' id= 'grandchildren_wrapper'>
                               <div class='exhibitionPage__main__contents__detail__category__choose2'>
                                 <i class='fas fa-chevron-down exhibitionPage__main__contents__detail__category__choose--arrow-down'></i>
-                                <select class="exhibitionPage__main__contents__detail__category__choose__box--select" id="grandchild_category" name="category_id">
+                                <select class="exhibitionPage__main__contents__detail__category__choose__box--select" id="grandchild_category" name="item[category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
@@ -38,6 +38,7 @@ $(function(){
   $('#parent_category').on('change', function(){
     var parent_category_id = document.getElementById
     ('parent_category').value; //選択された親カテゴリーの名前を取得
+    console.log(parent_category_id);
     if (parent_category_id != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'category/get_category_children',
@@ -66,7 +67,7 @@ $(function(){
   // 子カテゴリー選択後のイベント
   $('.exhibitionPage__main__contents__detail__category').on('change', '#child_category', function(){
     var child_category_id = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
-
+    console.log(child_category_id);
     if (child_category_id != "---"){ //子カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'category/get_category_grandchildren',
@@ -75,6 +76,7 @@ $(function(){
         dataType: 'json'
       })
       .done(function(grandchildren){
+        console.log(grandchildren);
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除する
           var insertHTML = '';
