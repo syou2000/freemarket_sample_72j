@@ -87,7 +87,7 @@
             .main1__show__contents--top__purchaseBox
               = link_to "#" , class: "buyBtn" do
                 .main1__show__contents--top__purchaseBox__btn
-                  %h1.comment 購入画面に進む
+                  %h1.comment 購入できません
 
           -elsif user_signed_in? 
             .main1__show__contents--top__purchaseBox
@@ -98,7 +98,7 @@
             .main1__show__contents--top__purchaseBox
               = link_to new_user_session_path , class: "buyBtn" do
                 .main1__show__contents--top__purchaseBox__btn
-                  %h1.comment 購入画面に進む
+                  %h1.comment 購入できません
 
         .main1__show__contents--top__commentBox
           %form#new_comment.new_comment

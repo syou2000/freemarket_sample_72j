@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :items, only: [:new, :create, :destroy, :edit, :show]
     resources :items do    
-      get :purchase, on: :member  
+      get :purchase, on: :member 
+      post :payment, on: :member
     end
+    get "complete", to: "items#complete"
+    
   resources :exhibition, only: [:index]
   get 'exhibition/index'
-
+  resources :cards, only: [:new, :index, :destroy]
+  post "pay", to: "cards#pay"
 end
