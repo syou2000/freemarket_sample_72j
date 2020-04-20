@@ -1,0 +1,26 @@
+.completePage
+  .completePage__header
+    .completePage__header__logoItem
+      = link_to root_path do
+        = image_tag "logo.png", class: "login_logo"
+  .completePage__main
+    .completePage__main__contents
+      %h2 購入が完了しました
+      .completePage__main__contents__box
+        %h3 ご購入ありがとうございます。商品の購入が完了致しました。
+        =link_to "トップページへ", root_path, class: "toNextBtn"
+
+  .completePage__footer
+    .completePage__footer__inner
+    %nav.completePage__footer__inner__nav
+      %ul.completePage__footer__inner__nav__category
+        %li
+          = link_to "プライバシーポリシー", "#", class: "privacyPolicy"
+        %li
+          = link_to "フリマ利用規約", "#", class: "terms"
+        %li
+          = link_to "特定商取引に関する表記", "#", class: "notation"
+      .completePage__footer__inner__nav__logo
+        = link_to root_path do
+          = image_tag "logo-white.png"
+        %p &copy Furima, Inc.
