@@ -1,6 +1,6 @@
 .exhibitionPage
   .header
-    = link_to image_tag("logo.png", alt: "exhibition_logo", class: "exhibition_logo"), "#"
+    = link_to image_tag("logo.png", alt: "exhibition_logo", class: "exhibition_logo"), root_path
   .exhibitionPage__main
     - if flash.now[:alert]
       .flash
