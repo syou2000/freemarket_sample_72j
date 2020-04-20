@@ -86,10 +86,6 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :price, :explain, :postage, :brand, :category_id, :prefecture_id, :shipping_date, :item_status, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
-  # def set_ancestry
-  #   @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-  # end
-
   def user_params
     params.require(:user).premit(:buyer_id, :exhibitor_id)
   end
