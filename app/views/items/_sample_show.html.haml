@@ -17,15 +17,13 @@
           .main1__show__contents--top__itemBox__body
             %ul
               %li
-                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class:"main_image", size: "560x346"
+                =image_tag @item.item_images.first.image.to_s, class:"main_image", size: "560x346"
                 %ul
-                  %li
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class:"sub_image",size: "140x87"
-                  %li
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", class:"sub_image",size: "140x87"
-                  %li
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", class:"sub_image",size: "140x87"
-              
+                  - @item.item_images.each_with_index do |item_image, i|
+                    %li
+                      = image_tag item_image.image.url, class:"sub_image", size: "110x70"
+                      
+            
                   
           .main1__show__contents--top__itemBox__price
             %span
@@ -37,14 +35,15 @@
               %span 送料込み
 
           .main1__show__contents--top__itemBox__text
-            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+            = @item.explain
 
           .main1__show__contents--top__itemBox__table
             %table
               %tbody
                 %tr
                   %th 出品者
-                  %td hoge
+                  %td 
+                    = @item.user.nickname
                 %tr
                   %th カテゴリー
                   %td
@@ -56,21 +55,24 @@
                 %tr
                   %th ブランド
                   %td 
+                    = @item.brand
                 %tr
                 %tr
                   %th 商品の状態
                   %td 
-                  
+                    = @item.item_status
                 %tr
                   %th 配送料の負担
-                  %td 送料込み（出品者負担）
+                  %td 
+                    = @item.postage
                 %tr
                   %th 発送元の地域
                   %td 
-                    北海道
+                    = @item.prefecture.name
                 %tr
                   %th 発送日の目安
-                  %td 4-7日で発送
+                  %td
+                    = @item.shipping_date
 
           .main1__show__contents--top__itemBox__optionalArea
             %ul.like
