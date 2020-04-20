@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find_by(id: params[:id])
+    @item = Item.find(params[:id])
     @items = Item.includes(:item_images).order(created_at: :desc)
     @images = ItemImage.order(created_at: :desc)
     @buyer_item = Buyer.pluck(:item_id)
