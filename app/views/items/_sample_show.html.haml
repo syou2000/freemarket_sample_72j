@@ -83,23 +83,37 @@
                 = link_to "#", class: "optionalBtn" do
                   = icon('fa', 'flag')
                   不適切な商品の通報
-
           -if user_signed_in? && current_user.id == @item.user_id
             .main1__show__contents--top__purchaseBox
-              = link_to "#" , class: "buyBtn" do
-                .main1__show__contents--top__purchaseBox__btn
-                  %h1.comment 購入できません
+              -if @buyer_item[1] == @item.id
+                = link_to "#" , class: "buyBtn" do
+                  .main1__show__contents--top__purchaseBox__btn
+                    %h1.comment 売れました
+              -else
+                = link_to "#" , class: "buyBtn" do
+                  .main1__show__contents--top__purchaseBox__btn
+                    %h1.comment 購入できません
 
           -elsif user_signed_in? 
             .main1__show__contents--top__purchaseBox
-              = link_to purchase_item_path(@item.id) , class: "buyBtn" do
-                .main1__show__contents--top__purchaseBox__btn
-                  %h1.comment 購入画面に進む
+              -if @buyer_item[1] == @item.id
+                = link_to "#" , class: "buyBtn" do
+                  .main1__show__contents--top__purchaseBox__btn
+                    %h1.comment 売り切れです
+              -else
+                = link_to purchase_item_path(@item.id) , class: "buyBtn" do
+                  .main1__show__contents--top__purchaseBox__btn
+                    %h1.comment 購入する
           -else 
             .main1__show__contents--top__purchaseBox
-              = link_to new_user_session_path , class: "buyBtn" do
-                .main1__show__contents--top__purchaseBox__btn
-                  %h1.comment 購入できません
+              -if @buyer_item[1] == @item.id
+                = link_to "#" , class: "buyBtn" do
+                  .main1__show__contents--top__purchaseBox__btn
+                    %h1.comment 売り切れです
+              -else
+                = link_to new_user_session_path , class: "buyBtn" do
+                  .main1__show__contents--top__purchaseBox__btn
+                    %h1.comment 購入できません
 
         .main1__show__contents--top__commentBox
           %form#new_comment.new_comment
