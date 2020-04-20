@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   has_many :items, dependent: :destroy
   has_many :buyeres
+  has_many :cards
 
   VALID_EMAIL_REGEX = /\A[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\z/
   VALID_PASS_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}+\z/i

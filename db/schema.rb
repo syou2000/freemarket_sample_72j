@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_065456) do
+ActiveRecord::Schema.define(version: 2020_04_16_075817) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 2020_04_18_065456) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text"
     t.datetime "created_at", null: false
@@ -78,13 +86,14 @@ ActiveRecord::Schema.define(version: 2020_04_18_065456) do
     t.integer "prefecture_id"
     t.string "shipping_date", null: false
     t.string "brand"
-    t.integer "category"
     t.string "item_status", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "buyer_id"
+    t.bigint "category_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
     t.index ["user_id"], name: "index_items_on_user_id"
