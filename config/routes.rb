@@ -10,8 +10,13 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :items, only: [:new, :create, :destroy, :edit, :show]
     resources :items do    
-      get :purchase, on: :member 
+      get :purchase, on: :member  
       post :payment, on: :member
+      #Ajaxで動くアクションのルートを作成
+      collection do
+        get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
+        get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
+      end
     end
     get "complete", to: "items#complete"
     
