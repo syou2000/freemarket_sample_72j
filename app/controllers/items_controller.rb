@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only:[:show, :destroy, :purchase]
+  before_action :set_item, only:[:show, :destroy, :edit, :update, :purchase]
 
   def new
     @item = Item.new
@@ -17,22 +17,40 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @items = Item.includes(:item_images).order(created_at: :desc)
+    @images = ItemImage.order(created_at: :desc)
+    @buyer_item = Buyer.pluck(:item_id)
   end
 
   def destroy
-    @item.destroy
-    redirect_to root_path
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   def edit 
+    # @item = Item.find(params[:id])
+    # @image = ItemImage.find(params[:id])
   end
 
+  def update
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      render :edit
+    end
+  end
+
+
+ 
   def purchase
   end
 
   private
   def item_params
-    params.require(:item).permit(:name, :price, :explain, :postage, :brand, :category, :prefecture_id, :shipping_date, :item_status, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :explain, :postage, :brand, :category, :prefecture_id, :shipping_date, :item_status, :buyer_id, :image, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def user_params
@@ -42,4 +60,6 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+
 end

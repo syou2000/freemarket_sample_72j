@@ -14,16 +14,23 @@
             %p 最大5枚までアップロードできます
           .exhibitionPage__main__contents__image__explanation
             .prev-content
+              - @item.item_images.each do |image|
+                .preview-box
+                  .upper-box
+                    = image_tag image.image.url, width: "112", height: "112", alt: "preview"
+                  .lower-box
+                    .delete-box
+                      .delete-btn
+                        %span 削除
             .label-content
-              %label{for: "item_item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+              = form.label :"item_images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
                 %pre.label-box__text-visible クリックしてファイルをアップロード
             .hidden-content
               = form.fields_for :item_images do |i|
                 = i.file_field :image, class: "hidden-field"
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_item_images_attributes_1_image" }
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][image]", id: "item_item_images_attributes_2_image" }
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_item_images_attributes_3_image" }
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_item_images_attributes_4_image" }
+                = i.check_box:_destroy, class: "hidden-checkbox"
+              - @item.item_images.length.upto(4) do |i|
+                %input{name: "item[item_images_attributes][#{i}][image]", id: "item_item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
         .exhibitionPage__main__contents__product
           .exhibitionPage__main__contents__product__name-box
             .exhibitionPage__main__contents__product__name-box__name
@@ -98,7 +105,7 @@
             -#   #result -
 
           .exhibition__price__selection
-            =form.submit '投稿する', class: 'exhibition__price__selection.finish'
+            =form.submit '編集する',class: 'exhibition__price__selection.finish'
             =link_to "もどる",root_path
           .exhibition__price__rules
             禁止されている
