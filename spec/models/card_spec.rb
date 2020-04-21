@@ -14,12 +14,6 @@ RSpec.describe Card, type: :model do
     expect(card.errors[:customer_id]).to include("can't be blank")
   end
 
-  # it "user_idがない場合は登録できないこと" do
-  #   card = build(:card, user_id: nil)
-  #   card.valid?
-  #   expect(card.errors[:user_id]).to include("can't be blank")
-  # end
-
   it "customer_idがない場合は登録できないこと" do
     card = build(:card, card_id: nil)
     card.valid?
