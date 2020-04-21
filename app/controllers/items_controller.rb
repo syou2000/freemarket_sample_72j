@@ -39,6 +39,8 @@ class ItemsController < ApplicationController
   end
   
   def show
+    @items = Item.includes(:item_images).order(created_at: :desc)
+    @images = ItemImage.order(created_at: :desc)
     @buyer_item = Buyer.pluck(:item_id)
   end
   
@@ -88,7 +90,7 @@ class ItemsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).premit(:buyer_id, :exhibitor_id)
+    params.require(:user).premit(:buyer_id, :exhibitor_id, :nikname)
   end
   
   def set_item

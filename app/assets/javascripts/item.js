@@ -1,3 +1,4 @@
+$(document).on('turbolinks:load', function(){
   $(function() {
     $('.sub_image').mouseover(function(){
     // "_thumb"を削った画像ファイル名を取得
@@ -19,3 +20,4 @@
     $(this).css({"border":""});
     });
   });
+});
