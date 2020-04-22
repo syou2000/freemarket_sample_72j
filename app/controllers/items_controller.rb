@@ -31,14 +31,13 @@ class ItemsController < ApplicationController
   end
 
   def edit 
-    # @item = Item.find(params[:id])
-    # @image = ItemImage.find(params[:id])
   end
 
   def update
     if @item.update(item_params)
       redirect_to item_path
     else
+      flash.now[:alert] = '入力に誤りがあります'
       render :edit
     end
   end

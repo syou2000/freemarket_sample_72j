@@ -14,14 +14,13 @@
             %p 最大5枚までアップロードできます
           .exhibitionPage__main__contents__image__explanation
             .prev-content
-              - @item.item_images.each do |image|
-                .preview-box
+              - @item.item_images.each_with_index do |image,i|
+                .preview-box{id:"preview-box__#{i}"}
                   .upper-box
                     = image_tag image.image.url, width: "112", height: "112", alt: "preview"
                   .lower-box
-                    .delete-box
-                      .delete-btn
-                        %span 削除
+                    .delete-box{id:"delete_btn_#{i}"}
+                      %span 削除
             .label-content
               = form.label :"item_images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
                 %pre.label-box__text-visible クリックしてファイルをアップロード

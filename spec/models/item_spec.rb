@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Item do
   describe '#create' do
 
-    it "nameとprice,explain,postage,prefecture_id,shipping_date,category,item_statusが存在すれば登録できること" do
+    it "nameとprice,explain,postage,prefecture_id,shipping_date,category,item_status,item_imageが存在すれば登録できること" do
       item = build(:item)
       expect(item).to be_valid
     end
@@ -77,6 +77,12 @@ describe Item do
     it "priceが300以上では登録できること " do
       item = build(:item, price: "300")
       expect(item).to be_valid
+    end
+
+    it "item_imageがない場合は登録できないこと" do
+      item = build(:item, item_image: nil)
+      item.valid?
+      expect(item.errors[:item_image]).to include("can't be blank")
     end
 
   end
