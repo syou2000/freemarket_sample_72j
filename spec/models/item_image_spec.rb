@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ItemImage, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
+  # association  :item, factory: :item
 end
 
 # describe Item do

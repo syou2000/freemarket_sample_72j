@@ -86,4 +86,22 @@ describe Item do
     end
 
   end
+  # RSpec.describe Item, type: :model do
+
+  #   before do
+  #     @item                      = FactoryBot.build(:item )
+  #     @item_no_picture           = FactoryBot.build(:item_no_picture)
+  #   end
+  
+  #   it "is valid with a :user,:item_picture" do
+  #     item = @item
+  #     expect(item).to be_valid
+  #   end
+  
+  #   it "is invalid without a item_pictures" do
+  #     item_no_picture = @item_no_picture
+  #     item_no_picture.valid?
+  #     expect(item_no_picture.errors[:item_pictures]).to include("を入力してください")
+  #   end
+  # end
 end
