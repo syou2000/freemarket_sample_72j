@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only:[:show, :destroy, :purchase, :payment]
-  
+  before_action :set_item, only:[:show, :destroy, :edit, :update, :purchase, :payment]
+
   def new
     @item = Item.new
     @item.item_images.new
@@ -54,7 +54,16 @@ class ItemsController < ApplicationController
   
   def edit
   end
-  
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      flash.now[:alert] = '入力に誤りがあります'
+      render :edit
+    end
+  end
+
   def purchase
     @address = Address.find(params[:id])
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
@@ -98,4 +107,3 @@ class ItemsController < ApplicationController
   end
 
 end
-  
