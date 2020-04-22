@@ -29,12 +29,12 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    # binding.pry
     if @item.save
       redirect_to root_path
     else
       flash.now[:alert] = '入力に誤りがあります'
-      render :new
+      # redirect_to action: :new
+      render action: :new
     end
   end
   
