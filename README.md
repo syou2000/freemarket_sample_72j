@@ -16,16 +16,12 @@
 |category_id|integer|null:false, foreign_key: true|
 |user_id|integer|null:false, foreign_key: true|
 |item_status|string|null: false|
-|buyer_id|integer|null: false|
 
 ### Association
-- has_many comments
 - belongs_to category
 - belongs_to user
-- belongs_to brand
-- has_many messages
 - has_many item_images
-- has_one late
+- has_many buyers
 
 
 ## item_imagesテーブル
@@ -36,23 +32,6 @@
 
 ### Association
 - belongs_to item
-
-
-## profielesテーブル
-|column|Type|Options|
-|------|----|-------|
-|nickname|string|null: false, index:true|
-|user_icon|string||
-|profile_text|text||
-|late_count|integer||
-
-### Association
-- has_many items
-- has_many comments
-- has_many messages
-- has_many lates
-- has_one address
-- has_one profiels
 
 
 ## usersテーブル
@@ -67,59 +46,24 @@
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to user
-
-
-## commentsテーブル
-|column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
-|text|text|null: false|
-
-### Association
-- belongs_to user
-- belongs_to item 
-
-
-## latesテーブル
-|column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|text|text||
-|late|integer||
-
-### Association
-- belongs_to user
-- belongs_to item
-
+- has_many items
+- has_many buyers
 
 ## categoriesテーブル
 |column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|ancestry|string|index: true|
 
 ### Association
 - has_many items
-
-
-## messagesテーブル
-|column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
-|text|text|null: false|
-
-### Association
-- belongs_to user
-- belongs_to item
 
 
 ## addressesテーブル
 |column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|zip_code|integer|null: false, index: false|
+|zip_code|integer|null: false|
 |city|string|null: false|
 |house_number|string|null: false|
 |building|string|null: false|
@@ -138,10 +82,20 @@
 |column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|number|integer|null: false|
-|expiration|date|null: false|
-|security_code|integer|null: false|
+|card_id|integer|null: false|
+|customer|integer|null: false|
 
 
 ### Association
 - belongs_to user
+
+
+## buyersテーブル
+|column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to user
+- belongs_to item

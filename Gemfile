@@ -93,4 +93,10 @@ gem 'active_hash'
 
 gem 'pry-rails'
 
+gem 'ancestry'
+
+gem 'payjp'
+
+gem 'dotenv-rails'
+
 gem 'fog-aws'

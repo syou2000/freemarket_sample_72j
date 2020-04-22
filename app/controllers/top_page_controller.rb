@@ -6,5 +6,5 @@ class TopPageController < ApplicationController
     @images = ItemImage.order(created_at: :desc)
     @buyerBrand = Buyer.pluck(:item_id)
   end
-
+  
 end

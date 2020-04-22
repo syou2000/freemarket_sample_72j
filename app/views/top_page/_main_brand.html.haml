@@ -6,29 +6,26 @@
       %a アーカイバー
     %ul.brand__box__lists
       - @brands.first(6).each do |brand|
-        %li.brand__box__lists__list
-          .brand__box__lists__list__image
-            - if brand.buyer_id.present?
-              =link_to root_path do
-                = image_tag(brand.item_images.first.image.to_s, class:"image")
-              .brand__box__lists__list__sold
-                .brand__box__lists__list__sold__inner
-                  %p SOLD
-                  .brand__box__lists__list__sold__inner__back
-            - else
-              =link_to root_path do
-                = image_tag(brand.item_images.first.image.to_s, class:"image")
-
-          .brand__box__lists__list__text
-            .brand__box__lists__list__text__name
-              = brand.name
-            .brand__box__lists__list__text__data
-              .brand__box__lists__list__text__data__price
-                = brand.price.to_s + "円"
-                %p (税込)
-              .brand__box__lists__list__text__data__quality
-                .brand__box__lists__list__text__data__quality__icon
-                  = icon('fa', 'star')
-                .brand__box__lists__list__text__data__quality__value
-                  -# = brand.item.user.profile.late_count
+        =link_to item_path(brand) do
+          %li.brand__box__lists__list
+            .brand__box__lists__list__image
+              = image_tag(brand.item_images.first.image.to_s, class:"image")
+              - @buyerBrand.each do |item_brand|
+                - if brand.id == item_brand
+                  .brand__box__lists__list__sold
+                    .brand__box__lists__list__sold__inner
+                      %p SOLD
+                      .brand__box__lists__list__sold__inner__back
+            .brand__box__lists__list__text
+              .brand__box__lists__list__text__name
+                = brand.name
+              .brand__box__lists__list__text__data
+                .brand__box__lists__list__text__data__price
+                  = brand.price.to_s + "円"
+                  %p (税込)
+                .brand__box__lists__list__text__data__quality
+                  .brand__box__lists__list__text__data__quality__icon
+                    = icon('fa', 'star')
+                  .brand__box__lists__list__text__data__quality__value
+                    -# = brand.item.user.profile.late_count
  

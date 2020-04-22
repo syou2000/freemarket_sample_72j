@@ -3,7 +3,8 @@
     %figure
       =image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", size: "60x60"
     = link_to "#" do
-      %h2.bold ユーザー名
+      %h2.bold 
+        = current_user.nickname
       .mypage-number
         .evaluation
           評価

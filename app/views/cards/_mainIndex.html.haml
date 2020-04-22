@@ -1,0 +1,43 @@
+.cardIntro
+  .cardIntro__header
+    %h2 支払い方法
+  .cardIntro__contents
+    .cardIntro__contents__box
+      %h3 クレジットカード一覧
+      .cardIntro__contents__box__add
+        - unless @card.present?
+          = link_to 'クレジットカードを追加する', new_card_path, data: {"turbolinks" => false}
+        -else
+          -if user_signed_in? && current_user.id == @card.user_id
+            = form_with url: card_path(@card.id), method: :delete, local: true, id: 'charge-form' do |f|
+              #card
+                .cardNumberIndex
+                  = "**** **** **** " + @card_information.last4
+                .cardLimitIndex
+                  - exp_month = @card_information.exp_month.to_s
+                  - exp_year = @card_information.exp_year.to_s.slice(2,3)
+                  %p 有効期限
+                  = exp_month + " / " + exp_year
+              %input{type: "hidden", name: "card_id", value: ""}
+              .submitIndex
+                = f.submit "削除する", class: "submitIndexbtn"
+          -else
+            #card
+              .cardNumberIndex
+                = "**** **** **** " + @card_information.last4
+              .cardLimitIndex
+                - exp_month = @card_information.exp_month.to_s
+                - exp_year = @card_information.exp_year.to_s.slice(2,3)
+                %p 有効期限
+                = exp_month + " / " + exp_year
+            %input{type: "hidden", name: "card_id", value: ""}
+            .submitIndex
+
+      .cardIntro__contents__box__payInfo
+        = link_to "#" do
+          支払い方法について
+          %i.fas.fa-arrow-right
+    %ul.content__credit-cards__list
+      %li
+
+
