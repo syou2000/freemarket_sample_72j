@@ -29,8 +29,8 @@
               = @item.price
 
             .main1__show__contents--top__itemBox__price--detail
-              %span (税込)
-              %span 送料込み
+              %span 
+                = @item.postage
 
           .main1__show__contents--top__itemBox__text
             = @item.explain

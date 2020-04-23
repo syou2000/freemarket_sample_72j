@@ -28,7 +28,7 @@
           %h3 支払い方法
           .purchasePage__main__contents__box__payment__way
           - unless @card.present?
-            =link_to new_card_path do
+            =link_to new_card_path, data: {"turbolinks" => false} do
               クレジットカードが登録されていません
           - else
             #card
@@ -50,7 +50,7 @@
               %p
                 = @address.last_name + @address.first_name
           - unless @card.present?
-            =link_to "クレジットカードを登録する", new_card_path, class: "submitBtn"
+            =link_to "クレジットカードを登録する", new_card_path, data: {"turbolinks" => false}, class: "submitBtn"
           - else
             = form_with model: @buyer, url: payment_item_path(@item), local: true do |form|
               =form.submit "購入する", class: "submitBtn"
