@@ -65,7 +65,7 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    @address = Address.find(params[:id])
+    @address = Address.find_by(user_id: current_user.id)
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
     @prefecture = Prefecture.find(@address.prefecture_id)
     if @card.present?
