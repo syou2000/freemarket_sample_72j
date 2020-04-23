@@ -10,8 +10,8 @@
           %li.category__box__lists__list
             .category__box__lists__list__image
               =image_tag item.item_images.first.image.to_s, class:"image"
-              - @buyerBrand.each do |item_brand|
-                - if item.id == item_brand
+              - @buyer_item.each do |buyer_item|
+                - if item.id == buyer_item
                   .category__box__lists__list__sold
                     .category__box__lists__list__sold__inner
                       %p SOLD
