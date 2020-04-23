@@ -55,21 +55,6 @@ ActiveRecord::Schema.define(version: 2020_04_16_075817) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "exhibitors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_exhibitors_on_item_id"
-    t.index ["user_id"], name: "index_exhibitors_on_user_id"
-  end
-
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
     t.bigint "item_id"
@@ -91,22 +76,12 @@ ActiveRecord::Schema.define(version: 2020_04_16_075817) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "buyer_id"
-    t.bigint "category_id"
+    t.bigint "category_id", null: false
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
     t.index ["user_id"], name: "index_items_on_user_id"
-  end
-
-  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "user_icon"
-    t.string "profile_text"
-    t.integer "late_count"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -126,10 +101,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_075817) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "buyer_id"
-    t.bigint "exhibitor_id"
     t.index ["buyer_id"], name: "index_users_on_buyer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["exhibitor_id"], name: "index_users_on_exhibitor_id"
     t.index ["nickname"], name: "index_users_on_nickname"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -138,11 +111,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_075817) do
   add_foreign_key "buyers", "items"
   add_foreign_key "buyers", "users"
   add_foreign_key "cards", "users"
-  add_foreign_key "exhibitors", "items"
-  add_foreign_key "exhibitors", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "buyers"
-  add_foreign_key "profiles", "users"
   add_foreign_key "users", "buyers"
-  add_foreign_key "users", "exhibitors"
 end
