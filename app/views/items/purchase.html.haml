@@ -52,7 +52,8 @@
           - unless @card.present?
             =link_to "クレジットカードを登録する", new_card_path, data: {"turbolinks" => false}, class: "submitBtn"
           - else
-            = form_with model: @buyer, url: payment_item_path(@item), local: true do |form|
+            = form_with model: @item, url: payment_item_path(@item), local: true do |form|
+              =form.select :buyer_id, [1], class: "hidden_field"
               =form.submit "購入する", class: "submitBtn"
   .purchasePage__footer
     .purchasePage__footer__inner

@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    @address = Address.find(params[:id])
+    @address = Address.find_by(user_id: current_user.id)
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
     @prefecture = Prefecture.find(@address.prefecture_id)
     if @card.present?
@@ -84,8 +84,7 @@ class ItemsController < ApplicationController
   end
   
   def payment
-    @buyer = Buyer.new(user_id: current_user.id, item_id: params[:id])
-    if @buyer.save
+    if @item.update(buyer_params)
       redirect_to complete_path
     else
       render :purchase
@@ -102,6 +101,10 @@ class ItemsController < ApplicationController
 
   def user_params
     params.require(:user).premit(:buyer_id, :exhibitor_id, :nikname)
+  end
+
+  def buyer_params
+    params.require(:item).permit(:id, :buyer_id)
   end
   
   def set_item
