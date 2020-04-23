@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
     @category_parent_array = ["---"]
     #データベースから、親カテゴリーのみ抽出し、配列化
     @category_parent_array = Category.where(ancestry: nil)
-    # binding.pry
   end
 
   # 以下全て、formatはjsonのみ
@@ -24,12 +23,10 @@ class ItemsController < ApplicationController
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find(params[:child_id]).children
-    # binding.pry
   end
   
   def create
     @item = Item.new(item_params)
-    # binding.pry
     if @item.save
       redirect_to root_path
     else
@@ -53,7 +50,11 @@ class ItemsController < ApplicationController
   end
   
   def edit
+    @category_parent_array = ["---"]
+    @category_parent_array = Category.where(ancestry: nil)
   end
+
+
 
   def update
     if @item.update(item_params)
