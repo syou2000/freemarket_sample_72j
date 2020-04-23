@@ -53,9 +53,12 @@ class ItemsController < ApplicationController
   def edit
     @category_parent_array = ["---"]
     @category_parent_array = Category.where(ancestry: nil)
+    @product_root_category = @item.category.root
+    @product_children_category = @product_root_category.children
+    @product_parent_category = @item.category.parent
+    @pearent_grandchildren_category = @product_parent_category.children
   end
-
-
+  
 
   def update
     if @item.update(item_params)
