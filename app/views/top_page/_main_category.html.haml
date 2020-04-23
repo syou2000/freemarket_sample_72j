@@ -10,12 +10,11 @@
           %li.category__box__lists__list
             .category__box__lists__list__image
               =image_tag item.item_images.first.image.to_s, class:"image"
-              - @buyer_item.each do |buyer_item|
-                - if item.id == buyer_item
-                  .category__box__lists__list__sold
-                    .category__box__lists__list__sold__inner
-                      %p SOLD
-                      .category__box__lists__list__sold__inner__back
+              -if item.buyer_id.present?
+                .category__box__lists__list__sold
+                  .category__box__lists__list__sold__inner
+                    %p SOLD
+                    .category__box__lists__list__sold__inner__back
             .category__box__lists__list__text
               .category__box__lists__list__text__name
                 = item.name
