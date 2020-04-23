@@ -214,6 +214,10 @@
           }
         }
 
+        select {
+          display: none;
+        }
+
         .submitBtn {
           display: block;
           background-color: red;

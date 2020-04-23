@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :items, only: [:new, :create, :destroy, :edit, :update, :show]
     resources :items do 
       get :purchase, on: :member  
-      post :payment, on: :member
+      put :payment, on: :member
+      patch :payment, on: :member
       #Ajaxで動くアクションのルートを作成
       collection do
         get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }

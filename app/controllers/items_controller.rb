@@ -84,8 +84,7 @@ class ItemsController < ApplicationController
   end
   
   def payment
-    @buyer = Buyer.new(buyer_params)
-    if @buyer.save
+    if @item.update(buyer_params)
       redirect_to complete_path
     else
       render :purchase
@@ -105,7 +104,7 @@ class ItemsController < ApplicationController
   end
 
   def buyer_params
-    params.require(:buyer).premit(:user_id, :item_id)
+    params.require(:item).permit(:id, :buyer_id)
   end
   
   def set_item
