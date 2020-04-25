@@ -21,8 +21,8 @@ class CardsController < ApplicationController
     else
 
       customer = Payjp::Customer.create(
-        description: 'test', 
-        email: current_user.email,
+        # description: 'test', 
+        # email: current_user.email,
         card: params['payjp-token'],
         metadata: {user_id: current_user.id} 
       )

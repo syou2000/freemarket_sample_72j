@@ -29,15 +29,6 @@ ActiveRecord::Schema.define(version: 2020_04_16_075817) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
-  create_table "buyers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_buyers_on_item_id"
-    t.index ["user_id"], name: "index_buyers_on_user_id"
-  end
-
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "customer_id", null: false
@@ -72,12 +63,11 @@ ActiveRecord::Schema.define(version: 2020_04_16_075817) do
     t.string "shipping_date", null: false
     t.string "brand"
     t.string "item_status", null: false
+    t.integer "buyer_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "buyer_id"
     t.bigint "category_id", null: false
-    t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
@@ -100,18 +90,12 @@ ActiveRecord::Schema.define(version: 2020_04_16_075817) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "buyer_id"
-    t.index ["buyer_id"], name: "index_users_on_buyer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname"], name: "index_users_on_nickname"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "addresses", "users"
-  add_foreign_key "buyers", "items"
-  add_foreign_key "buyers", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "item_images", "items"
-  add_foreign_key "items", "buyers"
-  add_foreign_key "users", "buyers"
 end
