@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
   def show
     @items = Item.includes(:item_images).order(created_at: :desc)
     @images = ItemImage.order(created_at: :desc)
-    @buyer_item = Buyer.pluck(:item_id)
+    # @buyer_item = Buyer.pluck(:item_id)
   end
   
   def destroy
